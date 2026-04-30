@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ht" class="dark scroll-smooth">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>OraTECH — Pi bon kalite | Pi bon pri</title>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+ <script src="https://cdn.tailwindcss.com"></script>
+ <script>
+ tailwind.config = {
+ darkMode: 'class',
+ theme: {
+ extend: {
+ fontFamily: { inter: ['Inter', 'system-ui', 'sans-serif'] },
+ colors: {
+ brand: { orange: '#FF5500', teal: '#00B8A9' },
+ surface: { dark: '#09090b', card: '#18181b', muted: '#27272a' }
+ },
+ keyframes: {
+ fadeUp: { '0%': { opacity:0, transform:'translateY(40px)' }, '100%': { opacity:1, transform:'translateY(0)' } },
+ pulseSlow: { '0%,100%': { transform:'scale(1)' }, '50%': { transform:'scale(1.06)' } },
+ float: { '0%,100%': { transform:'translateY(0) rotate(0deg)' }, '50%': { transform:'translateY(-20px) rotate(2deg)' } },
+ floatSlow: { '0%,100%': { transform:'translateY(0) rotate(0deg)' }, '50%': { transform:'translateY(-14px) rotate(-2deg)' } },
+ marquee: { '0%': { transform:'translateX(0%)' }, '100%': { transform:'translateX(-50%)' } },
+ modalIn: { '0%': { opacity:0, transform:'scale(.92) translateY(20px)' }, '100%': { opacity:1, transform:'scale(1) translateY(0)' } },
+ modalOut: { '0%': { opacity:1, transform:'scale(1)' }, '100%': { opacity:0, transform:'scale(.92) translateY(20px)' } },
+ },
+ animation: {
+ 'fade-up': 'fadeUp .8s ease-out forwards',
+ 'fade-up-d1': 'fadeUp .8s .15s ease-out forwards',
+ 'fade-up-d2': 'fadeUp .8s .3s ease-out forwards',
+ 'pulse-slow': 'pulseSlow 3s ease-in-out infinite',
+ 'float': 'float 8s ease-in-out infinite',
+ 'float-slow': 'floatSlow 12s ease-in-out infinite',
+ 'marquee': 'marquee 25s linear infinite',
+ 'modal-in': 'modalIn .35s ease-out forwards',
+ 'modal-out': 'modalOut .25s ease-in forwards',
+ }
+ }
+ }
+ };
+ </script>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+ <style>
+ ::-webkit-scrollbar { width:6px; }
+ ::-webkit-scrollbar-track { background:transparent; }
+ ::-webkit-scrollbar-thumb { background:#FF5500; border-radius:999px; }
+
+ /* Preloader */
+ #preloader { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; background:#09090b; transition: opacity .5s, visibility .5s; }
+ #preloader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+ .bar { width:120px; height:3px; background:#27272a; border-radius:999px; overflow:hidden; }
+ .bar-fill { width:0%; height:100%; background:linear-gradient(90deg,#FF5500,#00B8A9); border-radius:999px; transition: width .3s; }
+
+ /* Reveal */
+ .reveal { opacity:0; transform:translateY(30px); transition: all .7s cubic-bezier(.22,1,.36,1); }
+ .reveal.visible { opacity:1; transform:translateY(0); }
+
+ /* Search */
+ #searchInput { width:0; padding:0; opacity:0; transition: all .4s cubic-bezier(.22,1,.36,1); }
+ #searchInput.expanded { width:200px; padding:6px 14px; opacity:1; }
+ @media(max-width:640px){ #searchInput.expanded { width:140px; } }
+
+ /* Glow */
+ .glow-orange { box-shadow:0 0 30px rgba(255,85,0,.2); }
+
+ /* Hero BG */
+ .dark .hero-bg { background: radial-gradient(ellipse at 20% 50%, rgba(255,85,0,.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(0,184,169,.10) 0%, transparent 60%), linear-gradient(180deg, #09090b 0%, #18181b 100%); }
+ .hero-bg { background: radial-gradient(ellipse at 20% 50%, rgba(255,85,0,.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(0,184,169,.05) 0%, transparent 60%), linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%); }
+
+ /* Decorative BGs */
+ .bg-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size:60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); pointer-events:none; z-index:0; }
+ html:not(.dark) .bg-grid { background-image: linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px); }
+ .bg-squares { position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+ .bg-squares .sq { position:absolute; border:1px solid rgba(255,255,255,.04); border-radius:12px; }
+ html:not(.dark) .bg-squares .sq { border-color: rgba(0,0,0,.06); }
+ .bg-statue { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=800&q=70'); background-size:cover; background-position:center top; opacity:.06; pointer-events:none; z-index:0; mask-image:linear-gradient(to bottom, black 20%, transparent 85%); -webkit-mask-image:linear-gradient(to bottom, black 20%, transparent 85%); }
+ html:not(.dark) .bg-statue { opacity:.035; }
+ .bg-statue-cta { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=800&q=70'); background-size:cover; background-position:center 20%; opacity:.12; pointer-events:none; z-index:0; }
+ html:not(.dark) .bg-statue-cta { opacity:.06; }
+ .bg-orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; z-index:0; }
+ .bg-dots { position:absolute; inset:0; background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px); background-size:24px 24px; pointer-events:none; z-index:0; }
+ html:not(.dark) .bg-dots { background-image: radial-gradient(circle, rgba(0,0,0,.04) 1px, transparent 1px); }
+ .bg-diagonal { position:absolute; inset:0; background-image: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(255,85,0,.02) 80px, rgba(255,85,0,.02) 81px); pointer-events:none; z-index:0; }
+ html:not(.dark) .bg-diagonal { background-image: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(255,85,0,.03) 80px, rgba(255,85,0,.03) 81px); }
+
+ /* Marquee */
+ .marquee-track { display:flex; width:max-content; }
+
+ /* Back to top */
+ #backToTop { opacity:0; pointer-events:none; transition: all .3s; }
+ #backToTop.show { opacity:1; pointer-events:auto; }
+
+ /* Modal */
+ #productModal { transition: opacity .3s; }
+ #productModal.hiding .modal-content { animation: modalOut .25s ease-in forwards; }
+ .modal-content { animation: modalIn .35s ease-out forwards; }
+
+ /* Product card clickable */
+ .product-card { cursor:pointer; }
+ </style>
+</head>
+
+<body class="font-inter bg-white text-zinc-900 dark:bg-surface-dark dark:text-zinc-100 antialiased overflow-x-hidden transition-colors duration-500">
+
+<!-- ================ PRELOADER ================ -->
+<div id="preloader">
+ <div class="text-[2.5rem] font-black tracking-tight">
+ <span style="color:#FF5500">ORA</span><span style="color:#00B8A9">TECH</span>
+ </div>
+ <div class="bar"><div class="bar-fill" id="preloaderBar"></div></div>
+</div>
+
+<!-- ================ PRODUCT MODAL ================ -->
+<div id="productModal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+ <div class="modal-content relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl
+ bg-white dark:bg-surface-card border border-zinc-200 dark:border-white/10
+ shadow-2xl">
+ <!-- Close -->
+ <button id="modalClose" class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full
+ bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:bg-red-500 hover:text-white transition-all duration-300">
+ <i class="fa-solid fa-xmark text-lg"></i>
+ </button>
+ <!-- Image -->
+ <div class="relative overflow-hidden rounded-t-3xl bg-zinc-100 dark:bg-zinc-900">
+ <img id="modalImg" src="" alt="" class="w-full h-64 sm:h-80 object-cover" />
+ <span id="modalBadge" class="absolute top-4 left-4 bg-brand-teal text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+ <i class="fa-solid fa-certificate mr-1"></i> <span id="modalBadgeText">Original</span>
+ </span>
+ </div>
+ <!-- Body -->
+ <div class="p-6 sm:p-8">
+ <div class="flex items-start justify-between gap-4 mb-2">
+ <div>
+ <p id="modalCategory" class="text-brand-teal text-xs font-semibold uppercase tracking-wider mb-1"></p>
+ <h3 id="modalName" class="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white"></h3>
+ <p id="modalVariant" class="text-zinc-400 text-sm mt-1"></p>
+ </div>
+ <p id="modalPrice" class="text-2xl sm:text-3xl font-extrabold text-brand-orange whitespace-nowrap"></p>
+ </div>
+ <p id="modalDesc" class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mt-4 mb-6"></p>
+ <!-- Specs -->
+ <div id="modalSpecs" class="space-y-3 mb-8"></div>
+ <!-- WhatsApp CTA -->
+ <a id="modalWA" href="#" target="_blank" rel="noopener"
+ class="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white
+ font-semibold text-base py-4 rounded-2xl shadow-lg shadow-green-500/25
+ hover:scale-[1.02] transition-all duration-300">
+ <i class="fa-brands fa-whatsapp text-xl"></i>
+ Commander via WhatsApp
+ </a>
+ </div>
+ </div>
+</div>
+
+<!-- ================ HEADER ================ -->
+<header id="mainHeader" class="fixed top-0 inset-x-0 z-50 bg-white/70 dark:bg-surface-dark/70
+ backdrop-blur-xl border-b border-zinc-200 dark:border-white/5 transition-all duration-500">
+ <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+ <a href="#" class="flex-shrink-0 text-2xl font-extrabold tracking-tight select-none">
+ <span class="text-brand-orange">ORA</span><span class="text-brand-teal">TECH</span>
+ </a>
+ <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+ <a href="#hero" class="text-zinc-600 dark:text-zinc-300 hover:text-brand-orange transition-colors duration-300">Accueil</a>
+ <a href="#produits" class="text-zinc-600 dark:text-zinc-300 hover:text-brand-orange transition-colors duration-300">Smartphones</a>
+ <a href="#gadgets" class="text-zinc-600 dark:text-zinc-300 hover:text-brand-orange transition-colors duration-300">Gadgets</a>
+ <a href="#avis" class="text-zinc-600 dark:text-zinc-300 hover:text-brand-orange transition-colors duration-300">Avis</a>
+ <a href="#contact" class="text-zinc-600 dark:text-zinc-300 hover:text-brand-orange transition-colors duration-300">Contact</a>
+ </nav>
+ <div class="flex items-center gap-2">
+ <div class="relative flex items-center">
+ <input id="searchInput" type="text" placeholder="Rechercher…"
+ class="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-brand-orange/50" />
+ <button id="searchToggle" aria-label="Rechercher" class="w-9 h-9 flex items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-300">
+ <i class="fa-solid fa-magnifying-glass text-sm"></i>
+ </button>
+ </div>
+ <button id="themeToggle" aria-label="Changer de thème" class="w-9 h-9 flex items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-300">
+ <i class="fa-solid fa-sun text-sm hidden dark:inline"></i>
+ <i class="fa-solid fa-moon text-sm inline dark:hidden"></i>
+ </button>
+ <button id="menuToggle" aria-label="Menu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-300">
+ <i class="fa-solid fa-bars text-sm"></i>
+ </button>
+ </div>
+ </div>
+ <div id="mobileMenu" class="md:hidden hidden flex-col gap-2 px-6 pb-4 text-sm font-medium bg-white dark:bg-surface-dark border-t border-zinc-200 dark:border-white/5">
+ <a href="#hero" class="py-2 text-zinc-700 dark:text-zinc-300 hover:text-brand-orange transition-colors">Accueil</a>
+ <a href="#produits" class="py-2 text-zinc-700 dark:text-zinc-300 hover:text-brand-orange transition-colors">Smartphones</a>
+ <a href="#gadgets" class="py-2 text-zinc-700 dark:text-zinc-300 hover:text-brand-orange transition-colors">Gadgets</a>
+ <a href="#avis" class="py-2 text-zinc-700 dark:text-zinc-300 hover:text-brand-orange transition-colors">Avis</a>
+ <a href="#contact" class="py-2 text-zinc-700 dark:text-zinc-300 hover:text-brand-orange transition-colors">Contact</a>
+ </div>
+</header>
+
+<!-- ================ MARQUEE ================ -->
+<div class="fixed top-16 inset-x-0 z-40 bg-brand-orange/10 dark:bg-brand-orange/5 border-b border-brand-orange/10 overflow-hidden">
+ <div class="marquee-track animate-marquee py-2 text-xs font-semibold text-brand-orange tracking-wide uppercase">
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Disponible maintenant à Port-au-Prince</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Smartphones 100% originaux</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Livraison rapide dans tout Haïti</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Garantie OraTECH sur chaque appareil</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Support WhatsApp 24/7</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Kit Solaire · Chargeurs · Ventilateurs</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Disponible maintenant à Port-au-Prince</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Smartphones 100% originaux</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Livraison rapide dans tout Haïti</span>
+ <span class="mx-8 flex items-center gap-2"><i class="fa-solid fa-circle text-[5px]"></i> Garantie OraTECH sur chaque appareil</span>
+ </div>
+</div>
+
+<!-- ================ HERO ================ -->
+<section id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden" style="padding-top:7rem">
+ <div class="bg-statue"></div>
+ <div class="bg-grid"></div>
+ <div class="bg-squares">
+ <div class="sq w-32 h-32 top-[10%] left-[5%] animate-float opacity-40"></div>
+ <div class="sq w-20 h-20 top-[25%] right-[10%] animate-float-slow opacity-30"></div>
+ <div class="sq w-48 h-48 bottom-[15%] left-[15%] animate-float-slow opacity-20" style="animation-delay:-3s"></div>
+ <div class="sq w-16 h-16 top-[60%] right-[20%] animate-float opacity-30" style="animation-delay:-5s"></div>
+ <div class="sq w-24 h-24 bottom-[30%] right-[5%] animate-float-slow opacity-25" style="animation-delay:-7s"></div>
+ <div class="sq w-40 h-40 top-[5%] right-[30%] animate-float opacity-15" style="animation-delay:-2s"></div>
+ </div>
+ <div class="bg-orb w-96 h-96 -top-48 -left-48 bg-brand-orange/10 animate-float"></div>
+ <div class="bg-orb w-80 h-80 bottom-10 right-[-10%] bg-brand-teal/8 animate-float-slow"></div>
+ <div class="bg-diagonal"></div>
+
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full relative z-10">
+ <div class="max-w-3xl mx-auto text-center">
+
+ <div class="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/20
+ text-brand-orange text-xs font-semibold px-4 py-1.5 rounded-full mb-8 opacity-0 animate-fade-up">
+ <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+ Disponible maintenant · Port-au-Prince
+ </div>
+
+ <!-- TITRE — sans le | -->
+ <h1 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1] tracking-tight opacity-0 animate-fade-up-d1">
+ Pi bon
+ <span class="bg-gradient-to-r from-brand-orange to-brand-teal bg-clip-text text-transparent">kalite</span>
+ <br/>
+ Pi bon
+ <span class="bg-gradient-to-r from-brand-teal to-brand-orange bg-clip-text text-transparent">pri</span>
+ </h1>
+
+ <p class="mt-6 text-base sm:text-lg md:text-xl text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed opacity-0 animate-fade-up-d2">
+ Smartphones <strong class="text-zinc-800 dark:text-white">100 % originaux</strong>, livrés chez vous à Port-au-Prince.
+ Garantie assurée, prix imbattables et service client disponible <strong class="text-zinc-800 dark:text-white">24 h/24</strong>.
+ </p>
+
+ <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up-d2">
+ <a href="https://whatsapp.com/channel/0029VaQ6Ma38fewrQKaH0l2C" target="_blank" rel="noopener"
+ class="group inline-flex items-center gap-3 bg-brand-orange hover:bg-orange-600 text-white font-semibold text-sm sm:text-base px-8 py-4 rounded-2xl glow-orange hover:scale-105 transition-all duration-300">
+ <i class="fa-solid fa-bolt"></i> Voir les offres
+ <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+ </a>
+ <a href="#produits" class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:border-brand-teal hover:text-brand-teal font-medium text-sm sm:text-base px-8 py-4 rounded-2xl transition-all duration-300">
+ <i class="fa-solid fa-th-large text-xs"></i> Explorer
+ </a>
+ </div>
+
+ <div class="mt-16 grid grid-cols-3 divide-x divide-zinc-200 dark:divide-zinc-800 max-w-md mx-auto reveal">
+ <div class="px-4">
+ <p class="text-2xl sm:text-3xl font-bold text-brand-orange"><span class="counter" data-target="500">0</span>+</p>
+ <p class="text-xs text-zinc-500 mt-1">Clients satisfaits</p>
+ </div>
+ <div class="px-4">
+ <p class="text-2xl sm:text-3xl font-bold text-brand-teal"><span class="counter" data-target="100">0</span>%</p>
+ <p class="text-xs text-zinc-500 mt-1">Produits originaux</p>
+ </div>
+ <div class="px-4">
+ <p class="text-2xl sm:text-3xl font-bold text-zinc-800 dark:text-white">24/7</p>
+ <p class="text-xs text-zinc-500 mt-1">Support WhatsApp</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ================ MARQUES ================ -->
+<section class="py-12 md:py-16 bg-zinc-50 dark:bg-surface-card border-y border-zinc-200 dark:border-white/5 transition-colors duration-500 relative overflow-hidden">
+ <div class="bg-dots" style="opacity:.4"></div>
+ <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+ <p class="text-center text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-8">Marques disponibles chez OraTECH</p>
+ <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+ <div class="flex items-center gap-2 text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-300">
+ <i class="fa-brands fa-apple text-3xl sm:text-4xl"></i><span class="text-lg sm:text-xl font-bold hidden sm:inline">Apple</span>
+ </div>
+ <div class="flex items-center gap-2 text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-300">
+ <svg class="w-8 h-8 sm:w-9 sm:h-9 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3.14.69 4.22 1.78L12 11V5zm-1 0v6L6.78 6.78A5.96 5.96 0 0 1 11 5zM5 12c0-1.66.69-3.14 1.78-4.22L11 12H5zm1.78 4.22A5.96 5.96 0 0 1 5 12h6l-4.22 4.22zM12 19c-1.66 0-3.14-.69-4.22-1.78L12 13v6zm1 0v-6l4.22 4.22A5.96 5.96 0 0 1 13 19zm5.22-2.78L14 12h5a5.96 5.96 0 0 1-1.78 4.22zM13 11V5a5.96 5.96 0 0 1 4.22 1.78L13 11zm1 1h5c0 1.66-.69 3.14-1.78 4.22L14 12z"/></svg>
+ <span class="text-lg sm:text-xl font-bold hidden sm:inline">Samsung</span>
+ </div>
+ <div class="flex items-center gap-2 text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-300">
+ <i class="fa-brands fa-google text-2xl sm:text-3xl"></i><span class="text-lg sm:text-xl font-bold hidden sm:inline">Pixel</span>
+ </div>
+ <div class="flex items-center gap-2 text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-300">
+ <i class="fa-solid fa-solar-panel text-2xl sm:text-3xl"></i><span class="text-lg sm:text-xl font-bold hidden sm:inline">Énergie</span>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ================ SMARTPHONES ================ -->
+<section id="produits" class="py-20 md:py-28 bg-white dark:bg-zinc-950 transition-colors duration-500 relative overflow-hidden">
+ <div class="bg-dots"></div>
+ <div class="bg-grid" style="opacity:.5"></div>
+ <div class="bg-squares">
+ <div class="sq w-36 h-36 top-[5%] right-[8%] animate-float-slow opacity-20"></div>
+ <div class="sq w-24 h-24 bottom-[10%] left-[5%] animate-float opacity-25" style="animation-delay:-4s"></div>
+ </div>
+ <div class="bg-orb w-72 h-72 top-20 -left-36 bg-brand-teal/5 animate-float-slow"></div>
+ <div class="bg-orb w-64 h-64 bottom-10 -right-32 bg-brand-orange/5 animate-float"></div>
+
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+ <div class="text-center mb-16 reveal">
+ <p class="text-brand-teal text-sm font-semibold tracking-widest uppercase mb-3">Notre Collection</p>
+ <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+ Smartphones <span class="text-brand-orange">Premium</span>
+ </h2>
+ <p class="mt-4 text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
+ Chaque appareil est neuf, original et couvert par notre garantie OraTECH.
+ </p>
+ </div>
+
+ <!-- Grille — on utilise data-id pour le modal -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="smartphoneGrid">
+ <!-- Les cartes sont générées par JavaScript (voir section script) -->
+ </div>
+
+ <div class="text-center mt-14 reveal">
+ <a href="https://whatsapp.com/channel/0029VaQ6Ma38fewrQKaH0l2C" target="_blank" rel="noopener"
+ class="inline-flex items-center gap-3 border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white font-semibold text-sm sm:text-base px-10 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-brand-orange/20">
+ <i class="fa-brands fa-whatsapp text-lg"></i>
+ Voir plus de produits sur WhatsApp
+ <i class="fa-solid fa-arrow-right"></i>
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ================ GADGETS & ACCESSOIRES ================ -->
+<section id="gadgets" class="py-20 md:py-28 bg-zinc-50 dark:bg-surface-dark transition-colors duration-500 relative overflow-hidden">
+ <div class="bg-dots"></div>
+ <div class="bg-diagonal"></div>
+ <div class="bg-squares">
+ <div class="sq w-32 h-32 top-[10%] left-[8%] animate-float opacity-20" style="animation-delay:-3s"></div>
+ <div class="sq w-24 h-24 bottom-[15%] right-[10%] animate-float-slow opacity-25"></div>
+ </div>
+ <div class="bg-orb w-80 h-80 -top-40 right-[-10%] bg-brand-orange/5 animate-float"></div>
+ <div class="bg-orb w-64 h-64 bottom-[-10%] left-[-5%] bg-brand-teal/5 animate-float-slow"></div>
+
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+ <div class="text-center mb-16 reveal">
+ <p class="text-brand-orange text-sm font-semibold tracking-widest uppercase mb-3">Accessoires & Énergie</p>
+ <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+ Gadgets <span class="text-brand-teal">Essentiels</span>
+ </h2>
+ <p class="mt-4 text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
+ Tout ce qu'il vous faut pour rester connecté et alimenté, même pendant les coupures.
+ </p>
+ </div>
+
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="gadgetGrid">
+ <!-- Généré par JS -->
+ </div>
+
+ <div class="text-center mt-14 reveal">
+ <a href="https://wa.me/50946302424?text=Bonjou!%20Mwen%20ta%20renmen%20w%C3%A8%20gadgets%20ki%20disponib%20yo." target="_blank" rel="noopener"
+ class="inline-flex items-center gap-3 border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-semibold text-sm sm:text-base px-10 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-brand-teal/20">
+ <i class="fa-brands fa-whatsapp text-lg"></i>
+ Demander le catalogue complet
+ <i class="fa-solid fa-arrow-right"></i>
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ================ CONFIANCE ================ -->
+<section class="py-20 md:py-28 bg-white dark:bg-zinc-950 transition-colors duration-500 relative overflow-hidden">
+ <div class="bg-dots"></div>
+ <div class="bg-squares">
+ <div class="sq w-28 h-28 top-[15%] right-[12%] animate-float opacity-25" style="animation-delay:-2s"></div>
+ <div class="sq w-40 h-40 bottom-[10%] left-[8%] animate-float-slow opacity-15"></div>
+ </div>
+ <div class="bg-orb w-80 h-80 -top-40 left-1/2 -translate-x-1/2 bg-brand-orange/5 animate-float-slow"></div>
+
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+ <div class="text-center mb-16 reveal">
+ <p class="text-brand-orange text-sm font-semibold tracking-widest uppercase mb-3">Pourquoi OraTECH ?</p>
+ <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+ La confiance avant tout
+ </h2>
+ </div>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+ <div class="reveal text-center bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-8 sm:p-10 hover:border-brand-orange/40 dark:hover:border-brand-orange/30 transition-all duration-300 hover:scale-[1.03]">
+ <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange text-2xl mb-6"><i class="fa-solid fa-truck-fast"></i></div>
+ <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Livraison rapide</h3>
+ <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">Recevez votre commande rapidement partout à Port-au-Prince et dans les villes principales d'Haïti.</p>
+ </div>
+ <div class="reveal text-center bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-8 sm:p-10 hover:border-brand-teal/40 dark:hover:border-brand-teal/30 transition-all duration-300 hover:scale-[1.03]">
+ <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-teal/10 text-brand-teal text-2xl mb-6"><i class="fa-solid fa-shield-halved"></i></div>
+ <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Garantie assurée</h3>
+ <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">Chaque produit vendu est couvert par une garantie OraTECH. Achetez en toute sérénité.</p>
+ </div>
+ <div class="reveal text-center bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-8 sm:p-10 hover:border-brand-orange/40 dark:hover:border-brand-orange/30 transition-all duration-300 hover:scale-[1.03]">
+ <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange text-2xl mb-6"><i class="fa-brands fa-whatsapp"></i></div>
+ <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Support WhatsApp 24/7</h3>
+ <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">Posez vos questions à tout moment. Notre équipe est disponible sur WhatsApp pour vous accompagner.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ================ AVIS ================ -->
+<section id="avis" class="py-20 md:py-28 bg-zinc-50 dark:bg-surface-dark transition-colors duration-500 relative overflow-hidden">
+ <div class="bg-grid" style="opacity:.4"></div>
+ <div class="bg-orb w-72 h-72 top-0 right-[-10%] bg-brand-teal/5 animate-float-slow"></div>
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+ <div class="text-center mb-16 reveal">
+ <p class="text-brand-teal text-sm font-semibold tracking-widest uppercase mb-3">Témoignages</p>
+ <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+ Sa kliyan nou yo <span class="text-brand-orange">di</span>
+ </h2>
+ </div>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+ <div class="reveal bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-6 sm:p-8 hover:shadow-lg transition-all duration-300">
+ <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i></div>
+ <p class="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-6">"Mwen achte yon iPhone 15 Pro nan OraTECH, telefòn nan original 100%. Sèvis la rapid anpil, mwen rekòmande!"</p>
+ <div class="flex items-center gap-3">
+ <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-orange to-brand-teal flex items-center justify-center text-white font-bold text-sm">JB</div>
+ <div><p class="font-semibold text-sm text-zinc-900 dark:text-white">Jean-Baptiste R.</p><p class="text-xs text-zinc-400">Pétion-Ville</p></div>
+ </div>
+ </div>
+ <div class="reveal bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-6 sm:p-8 hover:shadow-lg transition-all duration-300">
+ <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i></div>
+ <p class="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-6">"Kit solè a chanje lavi m! Mwen gen limyè ak kouran menm lè EDH pa la. Mèsi OraTECH! 🔋"</p>
+ <div class="flex items-center gap-3">
+ <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-teal to-blue-500 flex items-center justify-center text-white font-bold text-sm">ML</div>
+ <div><p class="font-semibold text-sm text-zinc-900 dark:text-white">Marie-Louise P.</p><p class="text-xs text-zinc-400">Delmas</p></div>
+ </div>
+ </div>
+ <div class="reveal bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-6 sm:p-8 hover:shadow-lg transition-all duration-300">
+ <div class="flex items-center gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star-half-stroke text-sm"></i></div>
+ <p class="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-6">"Mwen te pran yon Samsung S24 Ultra, li te rive menm jou a! Garanti bay kè poze. Mèsi OraTECH! 🔥"</p>
+ <div class="flex items-center gap-3">
+ <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-orange to-red-500 flex items-center justify-center text-white font-bold text-sm">SC</div>
+ <div><p class="font-semibold text-sm text-zinc-900 dark:text-white">Stanley C.</p><p class="text-xs text-zinc-400">Port-au-Prince</p></div>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ================ CTA ================ -->
+<section class="py-24 md:py-32 relative overflow-hidden">
+ <div class="bg-statue-cta"></div>
+ <div class="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/70 dark:from-surface-dark dark:via-surface-dark/85 dark:to-surface-dark/60 z-[1]"></div>
+ <div class="bg-grid z-[2]"></div>
+ <div class="bg-orb w-72 h-72 top-0 left-[20%] bg-brand-orange/8 animate-float z-[1]"></div>
+ <div class="bg-orb w-56 h-56 bottom-0 right-[15%] bg-brand-teal/6 animate-float-slow z-[1]"></div>
+ <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+ <div class="reveal">
+ <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
+ Prêt à passer <span class="text-brand-orange">commande</span> ?
+ </h2>
+ <p class="mt-5 text-zinc-500 dark:text-zinc-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+ Contactez-nous directement sur WhatsApp — réponse garantie en moins de 5 minutes.
+ </p>
+ <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+ <a href="https://wa.me/50946302424?text=Bonjou!%20Mwen%20ta%20renmen%20pase%20yon%20k%C3%B2mand." target="_blank" rel="noopener"
+ class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm sm:text-base px-8 py-4 rounded-2xl shadow-lg shadow-green-500/25 hover:scale-105 transition-all duration-300">
+ <i class="fa-brands fa-whatsapp text-xl"></i> Écrire sur WhatsApp
+ </a>
+ <a href="https://www.instagram.com/oratechofficial?igsh=MWRiNWRjbmplaWZrbg==" target="_blank" rel="noopener"
+ class="inline-flex items-center gap-3 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:border-pink-500 hover:text-pink-500 font-medium text-sm sm:text-base px-8 py-4 rounded-2xl transition-all duration-300">
+ <i class="fa-brands fa-instagram text-lg"></i> Suivre sur Instagram
+ </a>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ================ FOOTER ================ -->
+<footer id="contact" class="border-t border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-surface-card transition-colors duration-500 relative overflow-hidden">
+ <div class="bg-dots" style="opacity:.4"></div>
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
+ <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+ <div class="text-center md:text-left">
+ <a href="#" class="text-2xl font-extrabold tracking-tight select-none">
+ <span class="text-brand-orange">ORA</span><span class="text-brand-teal">TECH</span>
+ </a>
+ <p class="mt-3 text-zinc-400 dark:text-zinc-500 text-sm"><i class="fa-solid fa-location-dot mr-1"></i> Port-au-Prince, Haïti</p>
+ <p class="mt-1 text-zinc-400 dark:text-zinc-500 text-sm"><i class="fa-solid fa-phone mr-1"></i> +509 4630 2424</p>
+ </div>
+ <div class="flex items-center gap-4">
+ <a href="https://www.instagram.com/oratechofficial?igsh=MWRiNWRjbmplaWZrbg==" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-instagram text-lg"></i></a>
+ <a href="https://www.tiktok.com/@oratechofficial?_r=1&_t=ZS-95vHwkxdD8b" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-black hover:ring-2 hover:ring-brand-teal text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-tiktok text-lg"></i></a>
+ <a href="https://www.facebook.com/share/1PzDiN8584/" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-blue-600 text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+ <a href="https://wa.me/50946302424" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-green-600 text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+ </div>
+ </div>
+ <div class="mt-10 pt-8 border-t border-zinc-200 dark:border-white/5 text-center">
+ <p class="text-zinc-400 dark:text-zinc-600 text-sm">&copy; <span id="year"></span> OraTECH. Tout droit réservé.</p>
+ </div>
+ </div>
+</footer>
+
+<!-- ================ FAB ================ -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+ <a href="https://www.facebook.com/share/1PzDiN8584/" target="_blank" rel="noopener" aria-label="Facebook"
+ class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xl shadow-lg shadow-blue-600/30 hover:scale-110 transition-all duration-300">
+ <i class="fa-brands fa-facebook-f"></i>
+ </a>
+ <a href="https://wa.me/50946302424?text=Bonjou!%20Mwen%20ta%20renmen%20gen%20plis%20enf%C3%B2masyon%20sou%20pwodui%20OraTECH%20yo." target="_blank" rel="noopener" aria-label="WhatsApp"
+ class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white text-2xl shadow-lg shadow-green-500/30 hover:scale-110 animate-pulse-slow transition-all duration-300">
+ <i class="fa-brands fa-whatsapp"></i>
+ </a>
+</div>
+
+<!-- ================ BACK TO TOP ================ -->
+<button id="backToTop" aria-label="Retour en haut"
+ class="fixed bottom-24 left-6 z-50 w-11 h-11 flex items-center justify-center rounded-full
+ bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400
+ hover:bg-brand-orange hover:text-white shadow-lg transition-all duration-300 hover:scale-110">
+ <i class="fa-solid fa-arrow-up text-sm"></i>
+</button>
+
+
+<!-- ================================================================
+ JAVASCRIPT — Produits, Modal, Thème, UI
+ ================================================================ -->
+<script>
+// ==========================================
+// DONNÉES PRODUITS
+// ==========================================
+const products = {
+ smartphones: [
+ {
+ id: 's1',
+ name: 'iPhone 16 Pro Max',
+ variant: '256GB · Titane Naturel',
+ price: '&#36;1,199',
+ category: 'Smartphone',
+ badge: 'Original',
+ // 📌 REMPLACE l'URL ci-dessous par ta propre image produit
+ image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=500&fit=crop&q=80',
+ desc: 'Le smartphone le plus puissant d\'Apple. Puce A18 Pro, écran Super Retina XDR 6.9", système de caméra pro avec zoom optique 5x.',
+ specs: [
+ { icon: 'fa-solid fa-microchip', label: 'Puce A18 Pro' },
+ { icon: 'fa-solid fa-display', label: 'Écran 6.9" Super Retina XDR' },
+ { icon: 'fa-solid fa-camera', label: 'Triple caméra 48 MP + Zoom 5x' },
+ { icon: 'fa-solid fa-battery-full', label: 'Batterie longue durée, USB-C' },
+ { icon: 'fa-solid fa-hard-drive', label: '256 GB de stockage' },
+ { icon: 'fa-solid fa-face-smile', label: 'Face ID avancé' },
+ ],
+ },
+ {
+ id: 's2',
+ name: 'iPhone 15 Pro',
+ variant: '128GB · Titane Bleu',
+ price: '&#36;999',
+ category: 'Smartphone',
+ badge: 'Original',
+ image: 'https://images.unsplash.com/photo-1696446702183-cbd13d78e1e7?w=600&h=500&fit=crop&q=80',
+ desc: 'Design en titane ultra-léger, puce A17 Pro et système de caméra pro pour des vidéos cinématiques.',
+ specs: [
+ { icon: 'fa-solid fa-microchip', label: 'Puce A17 Pro' },
+ { icon: 'fa-solid fa-display', label: 'Écran 6.1" Super Retina XDR' },
+ { icon: 'fa-solid fa-camera', label: 'Triple caméra 48 MP' },
+ { icon: 'fa-solid fa-battery-full', label: 'Batterie longue durée, USB-C' },
+ { icon: 'fa-solid fa-hard-drive', label: '128 GB de stockage' },
+ { icon: 'fa-solid fa-wand-magic-sparkles', label: 'Action Button personnalisable' },
+ ],
+ },
+ {
+ id: 's3',
+ name: 'iPhone 14 Pro Max',
+ variant: '256GB · Violet Intense',
+ price: '&#36;849',
+ category: 'Smartphone',
+ badge: 'Original',
+ image: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=600&h=500&fit=crop&q=80',
+ desc: 'Dynamic Island, écran always-on et caméra 48 MP. Un des meilleurs iPhone jamais conçus.',
+ specs: [
+ { icon: 'fa-solid fa-microchip', label: 'Puce A16 Bionic' },
+ { icon: 'fa-solid fa-display', label: 'Écran 6.7" Always-On' },
+ { icon: 'fa-solid fa-camera', label: 'Caméra principale 48 MP' },
+ { icon: 'fa-solid fa-battery-full', label: 'Jusqu\'à 29h de lecture vidéo' },
+ { icon: 'fa-solid fa-hard-drive', label: '256 GB de stockage' },
+ { icon: 'fa-solid fa-island-tropical', label: 'Dynamic Island' },
+ ],
+ },
+ {
+ id: 's4',
+ name: 'iPhone 14',
+ variant: '128GB · Bleu',
+ price: '&#36;649',
+ category: 'Smartphone',
+ badge: 'Original',
+ image: 'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=600&h=500&fit=crop&q=80',
+ desc: 'Fiable, puissant et accessible. Puce A15 Bionic, double caméra améliorée et détection d\'accident.',
+ specs: [
+ { icon: 'fa-solid fa-microchip', label: 'Puce A15 Bionic' },
+ { icon: 'fa-solid fa-display', label: 'Écran 6.1" Super Retina XDR' },
+ { icon: 'fa-solid fa-camera', label: 'Double caméra 12 MP' },
+ { icon: 'fa-solid fa-battery-full', label: 'Jusqu\'à 20h de lecture vidéo' },
+ { icon: 'fa-solid fa-hard-drive', label: '128 GB de stockage' },
+ { icon: 'fa-solid fa-car-burst', label: 'Détection d\'accident' },
+ ],
+ },
+ {
+ id: 's5',
+ name: 'Samsung Galaxy S24 Ultra',
+ variant: '256GB · Titane Gris',
+ price: '&#36;1,099',
+ category: 'Smartphone',
+ badge: 'Original',
+ image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=500&fit=crop&q=80',
+ desc: 'Le flagship ultime de Samsung avec Galaxy AI, S Pen intégré et caméra 200 MP.',
+ specs: [
+ { icon: 'fa-solid fa-microchip', label: 'Snapdragon 8 Gen 3 for Galaxy' },
+ { icon: 'fa-solid fa-display', label: 'Écran 6.8" Dynamic AMOLED 2X' },
+ { icon: 'fa-solid fa-camera', label: 'Caméra 200 MP + Zoom 100x' },
+ { icon: 'fa-solid fa-battery-full', label: 'Batterie 5000 mAh' },
+ { icon: 'fa-solid fa-hard-drive', label: '256 GB de stockage' },
+ { icon: 'fa-solid fa-pen-fancy', label: 'S Pen intégré + Galaxy AI' },
+ ],
+ },
+ {
+ id: 's6',
+ name: 'iPhone 13',
+ variant: '128GB · Minuit',
+ price: '&#36;499',
+ category: 'Smartphone',
+ badge: 'Original',
+ image: 'https://images.unsplash.com/photo-1632633173522-47456de71b76?w=600&h=500&fit=crop&q=80',
+ desc: 'Un iPhone performant à un prix accessible. Idéal pour le quotidien avec sa puce A15.',
+ specs: [
+ { icon: 'fa-solid fa-microchip', label: 'Puce A15 Bionic' },
+ { icon: 'fa-solid fa-display', label: 'Écran 6.1" Super Retina XDR' },
+ { icon: 'fa-solid fa-camera', label: 'Double caméra 12 MP' },
+ { icon: 'fa-solid fa-battery-full', label: 'Jusqu\'à 19h de lecture vidéo' },
+ { icon: 'fa-solid fa-hard-drive', label: '128 GB de stockage' },
+ { icon: 'fa-solid fa-droplet-slash', label: 'Résistant à l\'eau (IP68)' },
+ ],
+ },
+ {
+ id: 's7',
+ name: 'Samsung Galaxy A17 5G',
+ variant: '128GB · Noir',
+ price: '30 000 HTG',
+ category: 'Smartphone',
+ badge: 'Original',
+ // 📌 REMPLACE l'URL ci-dessous par ta propre image du Galaxy A17
+ image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=500&fit=crop&q=80',
+ desc: 'Performance 5G, fluide au quotidien. Écran large HD+, batterie longue durée et triple caméra 50 MP.',
+ specs: [
+ { icon: 'fa-solid fa-display', label: 'Écran 6.6" HD+ immersif' },
+ { icon: 'fa-solid fa-battery-full', label: 'Batterie 5000 mAh toute la journée' },
+ { icon: 'fa-solid fa-camera', label: 'Triple caméra 50 MP' },
+ { icon: 'fa-solid fa-hard-drive', label: '128 GB de stockage' },
+ { icon: 'fa-solid fa-signal', label: 'Connectivité 5G ultra-rapide' },
+ { icon: 'fa-solid fa-lock', label: 'Sécurité optimisée' },
+ ],
+ },
+ ],
+ gadgets: [
+ {
+ id: 'g1',
+ name: 'Kit Solaire 500W',
+ variant: 'Panneau 100W + Centrale + 4 Lampes LED',
+ price: '20 000 HTG',
+ category: 'Énergie Solaire',
+ badge: 'Garanti 6 mois',
+ // 📌 REMPLACE l'URL ci-dessous par ta propre image du Kit Solaire
+ image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=500&fit=crop&q=80',
+ desc: 'Stockez. Alimentez. Éclairez. Solution complète d\'énergie propre pour la maison, le bureau ou la boutique — même pendant les coupures.',
+ specs: [
+ { icon: 'fa-solid fa-solar-panel', label: '1 Panneau solaire 100W' },
+ { icon: 'fa-solid fa-lightbulb', label: '4 Lampes LED haute luminosité' },
+ { icon: 'fa-solid fa-car-battery', label: 'Centrale énergie 500W LiFePO4' },
+ { icon: 'fa-solid fa-plug', label: 'Prises AC / DC / USB multiples' },
+ { icon: 'fa-solid fa-clock', label: '10–12 heures d\'autonomie' },
+ { icon: 'fa-solid fa-volume-xmark', label: 'Silencieux, sans fumée' },
+ { icon: 'fa-solid fa-shield-halved', label: 'Système de protection intégré' },
+ { icon: 'fa-solid fa-house', label: 'Idéal : maison, bureau, boutique, camping' },
+ ],
+ },
+ {
+ id: 'g2',
+ name: 'Chargeur Sans Fil 15W',
+ variant: 'Wireless Qi + Câble USB-C + Adaptateur inclus',
+ price: '2 000 HTG',
+ category: 'Accessoire',
+ badge: 'Inclus : adaptateur',
+ // 📌 REMPLACE l'URL ci-dessous par ta propre image du Chargeur
+ image: 'https://images.unsplash.com/photo-1622445275576-721325763afe?w=600&h=500&fit=crop&q=80',
+ desc: 'Recharge rapide et efficace. Posez votre smartphone et laissez la charge commencer. Compatible avec tous les appareils Qi.',
+ specs: [
+ { icon: 'fa-solid fa-bolt', label: 'Charge rapide 15W (1.7x plus rapide)' },
+ { icon: 'fa-solid fa-wifi', label: 'Charge sans fil Qi universelle' },
+ { icon: 'fa-solid fa-shield-halved', label: 'Protection surtension, surchauffe, court-circuit' },
+ { icon: 'fa-solid fa-gem', label: 'Design élégant, support inclinable' },
+ { icon: 'fa-solid fa-plug', label: 'Entrée USB-C' },
+ { icon: 'fa-solid fa-box-open', label: 'Câble USB-C + Adaptateur inclus' },
+ ],
+ },
+ {
+ id: 'g3',
+ name: 'Ventilateur Mural Rechargeable',
+ variant: 'Joker AC/DC · 16" · Télécommande incluse',
+ price: '15 000 HTG',
+ category: 'Maison & Confort',
+ badge: 'Rechargeable',
+ // 📌 REMPLACE l'URL ci-dessous par ta propre image du Ventilateur
+ image: 'https://images.unsplash.com/photo-1617375407361-9815d85cdab0?w=600&h=500&fit=crop&q=80',
+ desc: 'Fraîcheur, confort, économie. Fonctionne sur secteur ou batterie pour rester au frais même en cas de coupure de courant.',
+ specs: [
+ { icon: 'fa-solid fa-battery-three-quarters', label: 'Rechargeable — batterie intégrée' },
+ { icon: 'fa-solid fa-plug', label: 'Double alimentation AC (secteur) / DC (batterie)' },
+ { icon: 'fa-solid fa-wind', label: '3 vitesses réglables' },
+ { icon: 'fa-solid fa-volume-xmark', label: 'Silencieux — frais et paisible' },
+ { icon: 'fa-solid fa-clock', label: '6–8 heures d\'autonomie' },
+ { icon: 'fa-solid fa-ruler-combined', label: 'Diamètre 16" (40 cm)' },
+ { icon: 'fa-solid fa-tower-broadcast', label: 'Télécommande incluse' },
+ { icon: 'fa-solid fa-screwdriver-wrench', label: 'Installation murale facile' },
+ ],
+ },
+ ],
+};
+
+// ==========================================
+// GÉNÉRATION DES CARTES
+// ==========================================
+function createCard(product, accentColor = 'orange') {
+ const borderHover = accentColor === 'teal' ? 'hover:border-brand-teal/40 dark:hover:border-brand-teal/30' : 'hover:border-brand-orange/40 dark:hover:border-brand-orange/30';
+ const shadowHover = accentColor === 'teal' ? 'hover:shadow-brand-teal/5' : 'hover:shadow-brand-orange/5';
+ const waText = encodeURIComponent(`Bonjou! Mwen enterese nan ${product.name}`);
+
+ return `
+ <div class="reveal product-card group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
+ border border-zinc-200 dark:border-white/5 overflow-hidden
+ ${borderHover} hover:shadow-xl ${shadowHover}
+ hover:scale-[1.03] transition-all duration-300"
+ data-product-id="${product.id}">
+ <div class="relative overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+ <img src="${product.image}" alt="${product.name}"
+ class="w-full h-56 sm:h-64 object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+ <span class="absolute top-3 left-3 bg-brand-${accentColor} text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+ <i class="fa-solid fa-certificate mr-1"></i> ${product.badge}
+ </span>
+ <!-- Icône zoom -->
+ <div class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-300">
+ <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white text-lg">
+ <i class="fa-solid fa-expand"></i>
+ </span>
+ </div>
+ </div>
+ <div class="p-5 sm:p-6">
+ <h3 class="font-bold text-lg text-zinc-900 dark:text-white">${product.name}</h3>
+ <p class="text-zinc-400 dark:text-zinc-500 text-sm mt-1">${product.variant}</p>
+ <div class="flex items-center justify-between mt-4">
+ <p class="text-2xl font-extrabold text-brand-orange">${product.price}</p>
+ <a href="https://wa.me/50946302424?text=${waText}" target="_blank" rel="noopener"
+ onclick="event.stopPropagation()"
+ class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 hover:scale-105">
+ <i class="fa-brands fa-whatsapp text-base"></i> Commander
+ </a>
+ </div>
+ </div>
+ </div>`;
+}
+
+// Remplir les grilles
+document.getElementById('smartphoneGrid').innerHTML = products.smartphones.map(p => createCard(p, 'teal')).join('');
+document.getElementById('gadgetGrid').innerHTML = products.gadgets.map(p => createCard(p, 'orange')).join('');
+
+
+// ==========================================
+// MODAL PRODUIT
+// ==========================================
+const modal = document.getElementById('productModal');
+const modalClose = document.getElementById('modalClose');
+const allProducts = [...products.smartphones, ...products.gadgets];
+
+function openModal(productId) {
+ const p = allProducts.find(x => x.id === productId);
+ if (!p) return;
+
+ document.getElementById('modalImg').src = p.image;
+ document.getElementById('modalImg').alt = p.name;
+ document.getElementById('modalBadgeText').textContent = p.badge;
+ document.getElementById('modalCategory').textContent = p.category;
+ document.getElementById('modalName').textContent = p.name;
+ document.getElementById('modalVariant').textContent = p.variant;
+ document.getElementById('modalPrice').textContent = p.price;
+ document.getElementById('modalDesc').textContent = p.desc;
+
+ const specsContainer = document.getElementById('modalSpecs');
+ specsContainer.innerHTML = p.specs.map(s => `
+ <div class="flex items-start gap-3">
+ <div class="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-xl bg-brand-orange/10 dark:bg-brand-orange/10 text-brand-orange text-sm">
+ <i class="${s.icon}"></i>
+ </div>
+ <p class="text-sm text-zinc-700 dark:text-zinc-300 pt
