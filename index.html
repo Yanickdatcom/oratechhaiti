@@ -1425,6 +1425,8 @@
     avisData.forEach(a => {
      const card = buildAvisCard(a);
      listContainer.appendChild(card);
+     // Declencher l'animation reveal sur les cartes injectees
+     obs.observe(card);
     });
    })
    .catch(err => {
@@ -1588,7 +1590,7 @@
    btn.disabled = false;
    btnText.textContent = originalText;
    closeAvisModal();
-   // Recharger les avis
+   showToast("✅ Mesi anpil ! Avis ou a resevwa.");
    loadAvis();
   })
   .catch(err => {
@@ -1597,6 +1599,23 @@
    btnText.textContent = originalText;
    document.getElementById("avisFormError").classList.remove("hidden");
   });
+ }
+
+ // ——— TOAST ———
+ function showToast(msg) {
+  const toast = document.createElement("div");
+  toast.textContent = msg;
+  toast.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#18181b;color:#fff;padding:14px 24px;border-radius:14px;font-size:14px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:99999;opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1);border:1px solid rgba(255,255,255,.08);white-space:nowrap;";
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => {
+   toast.style.opacity = "1";
+   toast.style.transform = "translateX(-50%) translateY(0)";
+  });
+  setTimeout(() => {
+   toast.style.opacity = "0";
+   toast.style.transform = "translateX(-50%) translateY(10px)";
+   setTimeout(() => toast.remove(), 400);
+  }, 3500);
  }
 
  // Charger les avis au demarrage
