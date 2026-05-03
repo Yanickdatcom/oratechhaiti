@@ -1367,13 +1367,14 @@
  // Remplace ces valeurs par celles de ton projet Firebase
  // (Console Firebase > Parametres du projet > SDK Firebase)
  const firebaseConfig = {
-  apiKey: "TON_API_KEY_ICI",
-  authDomain: "TON_PROJET.firebaseapp.com",
-  projectId: "TON_PROJET",
-  storageBucket: "TON_PROJET.appspot.com",
-  messagingSenderId: "TON_MESSAGING_SENDER_ID",
-  appId: "TON_APP_ID"
- };
+  apiKey: "AIzaSyBqvOS_QH3L7RIe_L9IgN29nSATvcDAYFg",
+  authDomain: "monavisapp-40279.firebaseapp.com",
+  projectId: "monavisapp-40279",
+  storageBucket: "monavisapp-40279.firebasestorage.app",
+  messagingSenderId: "24791808933",
+  appId: "1:24791808933:web:22eefa928cd38e51ae864c",
+  measurementId: "G-FJ4T1Q7X8Q"
+};
 
  // Initialiser Firebase seulement si la config est remplie
  let db = null;
@@ -1666,72 +1667,6 @@
  <img id="lbImg" src="" alt=""
   style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);" />
 </div>
-<!-- ========== FORMULAIRE AVIS ========== -->
-<section class="max-w-lg mx-auto px-4 py-16">
-  <h2 class="text-3xl font-bold text-center mb-8 text-zinc-900 dark:text-white">Kite yon avi</h2>
-  <form id="avis-form" class="space-y-4">
-    <input type="text" id="nom" placeholder="Non ou" required
-      class="w-full px-4 py-3 rounded-xl bg-white dark:bg-surface-card border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-orange">
-    <textarea id="message" placeholder="Kite mesaj ou a..." rows="4" required
-      class="w-full px-4 py-3 rounded-xl bg-white dark:bg-surface-card border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-orange"></textarea>
-    <button type="submit"
-      class="w-full py-3 px-6 rounded-xl font-semibold bg-zinc-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition">
-      Acheter
-    </button>
-  </form>
-  <p id="avis-message" class="text-center mt-4 text-green-500 font-medium"></p>
-</section>
 
-<!-- ========== SCRIPT FIREBASE (AVIS) ========== -->
-<script type="module">
-  // Importer Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  // ⚠️ Remplace par TA configuration (copiée depuis Firebase)
-  const firebaseConfig = {
-    apiKey: "AIzaSyBqvOS_QH3L7RIe_L9IgN29nSATvcDAYFg",
-    authDomain: "monavisapp-40279.firebaseapp.com",
-    projectId: "monavisapp-40279",
-    storageBucket: "monavisapp-40279.firebasestorage.app",
-    messagingSenderId: "24791808933",
-    appId: "1:24791808933:web:22eefa928cd38e51ae864c",
-    measurementId: "G-FJ4T1Q7X8Q"
-  };
-
-  // Initialiser Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Gérer l'envoi du formulaire
-  document.getElementById('avis-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const nom = document.getElementById('nom').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const msgEl = document.getElementById('avis-message');
-
-    if (!nom || !message) {
-      msgEl.textContent = "Tanpri ranpli tout chan yo.";
-      msgEl.classList.add('text-red-500');
-      return;
-    }
-
-    try {
-      await addDoc(collection(db, "avis"), {
-        nom: nom,
-        message: message,
-        createdAt: new Date().toISOString()
-      });
-      msgEl.textContent = "Mèsi! Avi ou a byen anrejistre.";
-      msgEl.classList.remove('text-red-500');
-      msgEl.classList.add('text-green-500');
-      document.getElementById('avis-form').reset();
-    } catch (error) {
-      console.error(error);
-      msgEl.textContent = "Yon erè rive. Eseye ankò.";
-      msgEl.classList.add('text-red-500');
-    }
-  });
-</script>
 </body>
 </html>
