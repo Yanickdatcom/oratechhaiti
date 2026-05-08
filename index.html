@@ -317,7 +317,7 @@
   <div class="flex items-center gap-2">
    <div class="relative flex items-center">
     <input id="searchInput" type="text" placeholder="Rechercher…"
-     class="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm rounded-full
+     class="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 text-base rounded-full
       focus:outline-none focus:ring-2 focus:ring-brand-orange/50" />
     <button id="searchToggle" aria-label="Rechercher"
      class="w-9 h-9 flex items-center justify-center rounded-full
@@ -1713,29 +1713,55 @@
   if (!searchBtn.contains(e.target) && !searchInput.contains(e.target))
    searchInput.classList.remove('expanded');
  });
- // FIX #1 : Filtrage live + message aucun résultat
+    searchInput.blur();
+ // ✅ RESET RECHERCHE QUAND ON CLIQUE SUR LE LOGO OU ACCUEIL
+ function resetSearchAndScroll() {
+  searchInput.value = '';
+  searchInput.dispatchEvent(new Event('input'));
+  searchInput.blur();
+  searchInput.classList.remove('expanded');
+ }
+ // FIX #1 : Filtrage live + message aucun résultat + défilement automatique
  searchInput.addEventListener('input', function() {
   var q = this.value.trim().toLowerCase();
   var foundNouveau = 0, foundCatalogue = 0;
+
   document.querySelectorAll('.nouveautes-card').forEach(function(card) {
    var txt = card.textContent.toLowerCase();
    var visible = (!q || txt.includes(q));
    card.style.display = visible ? '' : 'none';
    if (visible) foundNouveau++;
   });
-  document.querySelectorAll('.reveal').forEach(function(card) {
+
+  document.querySelectorAll('.reveal.group').forEach(function(card) {
    var txt = card.textContent.toLowerCase();
    var visible = (!q || txt.includes(q));
    card.style.display = visible ? '' : 'none';
    if (visible) foundCatalogue++;
   });
+
   var noResult = document.getElementById('no-result');
+  var aucun = (q && foundNouveau === 0 && foundCatalogue === 0);
   if (noResult) {
-   noResult.style.display = (q && foundNouveau === 0 && foundCatalogue === 0) ? 'block' : 'none';
+   noResult.style.display = aucun ? 'block' : 'none';
   }
-  if (q.length === 1) {
-   var sec = document.getElementById('produits');
-   if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // ✅ Défilement automatique vers le résultat
+  if (q) {
+   if (aucun) {
+    // Va directement au message "Produit non trouvé"
+    if (noResult) noResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+   } else {
+    // Va au premier produit visible
+    var premier = document.querySelector('.nouveautes-card:not([style*="display: none"]), .reveal.group:not([style*="display: none"])');
+    if (premier) {
+     premier.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+   }
+   if (q.length === 1) {
+    var sec = document.getElementById('produits');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+   }
   }
  });
  searchInput.addEventListener('keydown', function(e) {
@@ -1746,6 +1772,11 @@
   }
  });
 
+  // ✅ Lier le reset au clic sur le logo OraTECH et le lien Accueil
+ document.querySelectorAll('a[href="#hero"]').forEach(function(link) {
+  link.addEventListener('click', resetSearchAndScroll);
+ });
+ 
  // ——— Mobile Menu ———
  const menuBtn = document.getElementById('menuToggle');
  const mob = document.getElementById('mobileMenu');
@@ -1784,7 +1815,22 @@
   });
  }, { threshold: 0.5 });
  document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
+ // ✅ Fermer le clavier quand on fait défiler la page (sauf si on est en train de taper)
+ var searchScrollTimer;
+ searchInput.addEventListener('input', function() {
+  clearTimeout(searchScrollTimer);
+  // On ne ferme pas le clavier pendant 500ms après la dernière frappe
+  searchScrollTimer = setTimeout(function() {
+   // Après ce délai, le scroll pourra fermer le clavier
+  }, 500);
+ });
 
+ window.addEventListener('scroll', function() {
+  // Ne rien faire si un timer de frappe est actif
+  if (searchScrollTimer) return;
+  if (document.activeElement === searchInput) searchInput.blur();
+ });
+ 
  // ——— Header shadow + Back to Top ———
  const header = document.getElementById('mainHeader');
  const btt = document.getElementById('backToTop');
