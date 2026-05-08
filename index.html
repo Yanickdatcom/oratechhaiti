@@ -2,7 +2,7 @@
 <html lang="ht" class="dark scroll-smooth">
 <head>
  <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
  <title>OraTECH — La tech que tu mérites.</title>
 
  <!-- SEO -->
@@ -233,11 +233,9 @@
   #backToTop.show { opacity:1; pointer-events:auto; }
 
   /* ===== PREMIUM MICRO DETAILS ===== */
-  /* Active state feedback */
   .btn-active { transition: transform .1s cubic-bezier(.16,1,.3,1); }
   .btn-active:active { transform: scale(.97); }
 
-  /* Smooth price reveal */
   .price-tag {
    font-size: 1.35rem;
    font-weight: 900;
@@ -245,7 +243,6 @@
    line-height: 1;
   }
 
-  /* Card inner glow on hover */
   .card-glow {
    position: relative;
   }
@@ -260,7 +257,6 @@
   }
   .card-glow:hover::before { opacity: 1; }
 
-  /* Skeleton pulse refined */
   @keyframes shimmer {
    0% { background-position: -400px 0; }
    100% { background-position: 400px 0; }
@@ -271,7 +267,6 @@
    animation: shimmer 1.6s infinite linear;
   }
 
-  /* Scrollbar premium */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#FF5500,#00B8A9); border-radius: 999px; }
  </style>
@@ -443,7 +438,7 @@
  </div>
 </section>
 <!-- Vidéo Vitrine OraTECH -->
-<div class="max-w-4xl mx-auto px-4 py-2"> <!-- Changé py-12 en py-2 -->
+<div class="max-w-4xl mx-auto px-4 py-2">
   <div class="relative w-full aspect-video overflow-hidden rounded-[2.5rem] shadow-2xl border border-white/5 bg-zinc-900/20">
     <video 
       src="https://res.cloudinary.com/dtjfecmkv/video/upload/v1778084806/hero_1_efxggs.mp4" 
@@ -463,7 +458,6 @@
 <section class="py-16 md:py-20 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-white/[0.04] transition-colors duration-500 overflow-hidden">
  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <!-- Header -->
   <div class="flex items-end justify-between mb-8 reveal">
    <div>
     <p class="text-brand-orange text-[11px] font-bold tracking-[0.2em] uppercase mb-2 flex items-center gap-2">
@@ -474,7 +468,6 @@
      Nouveautés <span class="text-brand-orange">OraTECH</span>
     </h2>
    </div>
-   <!-- Nav arrows desktop -->
    <div class="hidden sm:flex items-center gap-2">
     <button id="nouv-prev" class="w-10 h-10 rounded-full border border-zinc-200 dark:border-white/10 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:border-brand-orange hover:text-brand-orange transition-all duration-200">
      <i class="fa-solid fa-chevron-left text-xs"></i>
@@ -485,12 +478,10 @@
    </div>
   </div>
 
-  <!-- Slider track -->
   <div class="relative">
    <div id="nouveautes-track" class="flex gap-5 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory" style="scrollbar-width:none;-ms-overflow-style:none;">
    <!-- iPhone 16 Pro Max -->
    <div class="nouveautes-card group flex-shrink-0 w-64 sm:w-72 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-100 dark:border-white/[0.06] overflow-hidden flex flex-col shadow-sm hover:shadow-xl hover:shadow-brand-orange/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-    <!-- Nom + Badge -->
     <div class="px-5 pt-5 pb-3 flex items-start justify-between gap-2">
      <div>
       <h3 class="text-sm font-bold text-zinc-900 dark:text-white leading-tight tracking-tight">iPhone 16 Pro Max</h3>
@@ -498,13 +489,11 @@
      </div>
      <span class="flex-shrink-0 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white bg-gradient-to-r from-brand-orange to-amber-400">Nouveau</span>
     </div>
-    <!-- Image -->
-    <div class="flex-1 flex items-center justify-center bg-transparent overflow-hidden" style="min-height:200px" style="min-height:200px">
+    <div class="flex-1 flex items-center justify-center bg-transparent overflow-hidden" style="min-height:200px">
      <img src="https://i.ibb.co/1Jrbd9vS/iphone16pm.png"
       alt="iPhone 16 Pro Max"
       class="w-full h-52 object-contain p-2 group-hover:scale-105 transition-transform duration-500" />
     </div>
-    <!-- Specs + Prix + CTA -->
     <div class="px-5 pb-5 pt-4 flex flex-col gap-3">
      <div class="grid grid-cols-2 gap-1.5">
       <div class="flex items-center gap-1.5"><i class="fa-solid fa-hard-drive text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">1 To</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-unlock text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">Full Unlock</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-sim-card text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">eSIM</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-5 text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">5G</span></div>
@@ -522,7 +511,6 @@
    </div>
    <!-- iPhone 16+ -->
    <div class="nouveautes-card group flex-shrink-0 w-64 sm:w-72 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-100 dark:border-white/[0.06] overflow-hidden flex flex-col shadow-sm hover:shadow-xl hover:shadow-brand-orange/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-    <!-- Nom + Badge -->
     <div class="px-5 pt-5 pb-3 flex items-start justify-between gap-2">
      <div>
       <h3 class="text-sm font-bold text-zinc-900 dark:text-white leading-tight tracking-tight">iPhone 16+</h3>
@@ -530,13 +518,11 @@
      </div>
      <span class="flex-shrink-0 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white bg-gradient-to-r from-brand-orange to-amber-400">Nouveau</span>
     </div>
-    <!-- Image -->
     <div class="flex-1 flex items-center justify-center bg-transparent overflow-hidden" style="min-height:200px">
      <img src="https://i.ibb.co/BH2Phmw5/iphone16plus.png"
       alt="iPhone 16+"
       class="w-full h-52 object-contain p-2 group-hover:scale-105 transition-transform duration-500" />
     </div>
-    <!-- Specs + Prix + CTA -->
     <div class="px-5 pb-5 pt-4 flex flex-col gap-3">
      <div class="grid grid-cols-2 gap-1.5">
       <div class="flex items-center gap-1.5"><i class="fa-solid fa-hard-drive text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">256 Go</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-unlock text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">Full Unlock</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-sim-card text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">eSIM</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-5 text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">5G</span></div>
@@ -554,7 +540,6 @@
    </div>
    <!-- Samsung Galaxy S22 Ultra 5G -->
    <div class="nouveautes-card group flex-shrink-0 w-64 sm:w-72 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-100 dark:border-white/[0.06] overflow-hidden flex flex-col shadow-sm hover:shadow-xl hover:shadow-brand-orange/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-    <!-- Nom + Badge -->
     <div class="px-5 pt-5 pb-3 flex items-start justify-between gap-2">
      <div>
       <h3 class="text-sm font-bold text-zinc-900 dark:text-white leading-tight tracking-tight">Samsung Galaxy S22 Ultra 5G</h3>
@@ -562,13 +547,11 @@
      </div>
      <span class="flex-shrink-0 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white bg-gradient-to-r from-brand-teal to-cyan-400">Promo</span>
     </div>
-    <!-- Image -->
     <div class="flex-1 flex items-center justify-center bg-transparent overflow-hidden" style="min-height:200px">
      <img src="https://i.ibb.co/tTmhf3WT/s22ultra.png"
       alt="Samsung Galaxy S22 Ultra 5G"
       class="w-full h-52 object-contain p-2 group-hover:scale-105 transition-transform duration-500" />
     </div>
-    <!-- Specs + Prix + CTA -->
     <div class="px-5 pb-5 pt-4 flex flex-col gap-3">
      <div class="grid grid-cols-2 gap-1.5">
       <div class="flex items-center gap-1.5"><i class="fa-solid fa-hard-drive text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">128 Go</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-unlock text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">Full Unlock</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-pen text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">S Pen inclus</span></div><div class="flex items-center gap-1.5"><i class="fa-solid fa-5 text-brand-orange text-[10px] w-3"></i><span class="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">5G</span></div>
@@ -638,10 +621,9 @@
      </div>
     </div>
    </div>
-   </div><!-- fin nouveautes-track -->
-   <!-- Gradient fade edges -->
+   </div>
    <div class="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-zinc-50 dark:from-zinc-950 to-transparent"></div>
-  </div><!-- fin relative -->
+  </div>
 
 </section>
 
@@ -674,7 +656,6 @@
 
 <!-- ================ PRODUITS ================ -->
 <section id="produits" class="py-20 md:py-28 bg-white dark:bg-zinc-950 transition-colors duration-500 relative overflow-hidden">
- <!-- FIX #1 : Message affiché quand aucun produit ne correspond à la recherche -->
  <div id="no-result" style="display:none;" class="text-center py-16 relative z-10">
   <i class="fa-solid fa-magnifying-glass text-4xl text-zinc-300 dark:text-zinc-600 mb-4 block"></i>
   <p class="text-zinc-500 dark:text-zinc-400 font-semibold text-lg">Produit non trouvé</p>
@@ -698,7 +679,6 @@
 
  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-  <!-- ── SMARTPHONES ── -->
   <div class="text-center mb-16 reveal">
    <p class="text-brand-teal text-[11px] font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-2"><span class="inline-block w-6 h-px bg-brand-teal opacity-60"></span>Notre Collection<span class="inline-block w-6 h-px bg-brand-teal opacity-60"></span></p>
    <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-[-0.02em] text-zinc-900 dark:text-white">
@@ -710,7 +690,7 @@
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-14">
-   <!-- ── iPhone 15 Pro Max ── -->
+   <!-- iPhone 15 Pro Max -->
    <div class="reveal group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-700 overflow-hidden hover:border-pink-400/60 dark:hover:border-pink-400/40 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.02] flex flex-col">
     <div class="px-5 pt-5 flex items-center justify-between">
      <h3 class="text-base font-bold text-zinc-900 dark:text-white tracking-tight">iPhone 15 Pro Max</h3>
@@ -740,6 +720,7 @@
     </div>
    </div>
 
+   <!-- Samsung Galaxy A22 5G -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -768,6 +749,8 @@
      </div>
     </div>
    </div>
+
+   <!-- Samsung Galaxy A16 5G -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -796,6 +779,8 @@
      </div>
     </div>
    </div>
+
+   <!-- Samsung Galaxy F17 5G -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -811,8 +796,7 @@
      </span>
     </div>
     <div class="p-5 sm:p-6">
-     <h3 class="font-bold text-lg text-zinc-900 dark:text-white">Samsung Galaxy
-     F17 5G</h3>
+     <h3 class="font-bold text-lg text-zinc-900 dark:text-white">Samsung Galaxy F17 5G</h3>
      <p class="text-zinc-400 dark:text-zinc-500 text-sm mt-1">128 GB · 5G · Neuf</p>
      <div class="flex items-center justify-between mt-4">
       <p class="text-2xl font-extrabold text-brand-orange">30 000 HTG</p>
@@ -825,6 +809,8 @@
      </div>
     </div>
    </div>
+
+   <!-- Samsung Galaxy A36 5G -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -853,6 +839,8 @@
      </div>
     </div>
    </div>
+
+   <!-- iPhone 12 Rouge -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -881,6 +869,8 @@
      </div>
     </div>
    </div>
+
+   <!-- iPhone 12 Pro Max -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -909,6 +899,8 @@
      </div>
     </div>
    </div>
+
+   <!-- iPhone 14 Pro -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -937,6 +929,8 @@
      </div>
     </div>
    </div>
+
+   <!-- iPhone 14 Pro Max -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -967,9 +961,7 @@
    </div>
   </div>
 
-
-
-  <!-- ── FAQ SMARTPHONES ── -->
+  <!-- FAQ SMARTPHONES -->
   <div class="mt-16 max-w-3xl mx-auto reveal">
    <p class="text-brand-teal text-sm font-semibold tracking-widest uppercase mb-3 text-center">Foire aux questions</p>
    <h3 class="text-xl sm:text-2xl font-bold text-center text-zinc-900 dark:text-white mb-8">Smartphones — Ce qu'il faut savoir</h3>
@@ -1013,7 +1005,7 @@
    </div>
   </div>
 
-  <!-- ── GADGETS & ACCESSOIRES ── -->
+  <!-- GADGETS & ACCESSOIRES -->
   <div class="text-center mb-16 reveal" id="gadgets">
    <p class="text-brand-teal text-sm font-semibold tracking-widest uppercase mb-3">Energie &amp; Confort</p>
    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
@@ -1025,6 +1017,7 @@
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+   <!-- Kit Solaire 500W -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -1053,6 +1046,7 @@
      </div>
     </div>
    </div>
+   <!-- Ventilateur Mural AC/DC -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -1081,6 +1075,7 @@
      </div>
     </div>
    </div>
+   <!-- Chargeur Sans Fil 15W -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -1109,10 +1104,8 @@
      </div>
     </div>
    </div>
-  </div>
 
-
-   <!-- ── Adaptateur iPhone USB-C 25W ── -->
+   <!-- Adaptateur iPhone USB-C 25W -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -1142,7 +1135,7 @@
     </div>
    </div>
 
-   <!-- ── Casque JBL Tune 760BT ── -->
+   <!-- Casque JBL Tune 760BT -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -1172,7 +1165,7 @@
     </div>
    </div>
 
-   <!-- ── Radio Xtreme P192 ── -->
+   <!-- Radio Xtreme P192 -->
    <div class="reveal group bg-zinc-50/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
     border border-zinc-200 dark:border-white/5
     overflow-hidden hover:border-brand-orange/40 dark:hover:border-brand-orange/30
@@ -1201,10 +1194,9 @@
      </div>
     </div>
    </div>
+  </div>
 
-
-
-  <!-- ── FAQ GADGETS & ACCESSOIRES ── -->
+  <!-- FAQ GADGETS & ACCESSOIRES -->
   <div class="mt-16 max-w-3xl mx-auto reveal">
    <p class="text-brand-orange text-sm font-semibold tracking-widest uppercase mb-3 text-center">Foire aux questions</p>
    <h3 class="text-xl sm:text-2xl font-bold text-center text-zinc-900 dark:text-white mb-8">Gadgets — Questions fréquentes</h3>
@@ -1255,8 +1247,6 @@
 </section>
 
 
-
-
 <!-- ================ DÉCODAGE & RÉPARATION ================ -->
 <section id="services" class="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
 
@@ -1278,8 +1268,6 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-
-   <!-- Card Décodage -->
    <div class="reveal group bg-zinc-900 border border-white/8 rounded-3xl p-8
     hover:border-brand-teal/30 transition-all duration-300 hover:-translate-y-1 flex flex-col">
     <div class="flex items-start justify-between mb-6">
@@ -1312,7 +1300,6 @@
     </div>
    </div>
 
-   <!-- Card Réparation -->
    <div class="reveal group bg-zinc-900 border border-white/8 rounded-3xl p-8
     hover:border-brand-orange/30 transition-all duration-300 hover:-translate-y-1 flex flex-col">
     <div class="flex items-start justify-between mb-6">
@@ -1344,15 +1331,12 @@
      </a>
     </div>
    </div>
-
   </div>
-
  </div>
 </section>
 
 <!-- ================ CONFIANCE ================ -->
 <section class="py-20 md:py-28 bg-zinc-50 dark:bg-surface-dark transition-colors duration-500 relative overflow-hidden">
-
  <div class="bg-dots"></div>
  <div class="bg-diagonal"></div>
  <div class="bg-squares">
@@ -1360,54 +1344,29 @@
   <div class="sq w-40 h-40 bottom-[10%] left-[8%] animate-float-slow opacity-15"></div>
  </div>
  <div class="bg-orb w-80 h-80 -top-40 left-1/2 -translate-x-1/2 bg-brand-orange/5 animate-float-slow"></div>
-
  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
   <div class="text-center mb-16 reveal">
    <p class="text-brand-orange text-[11px] font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-2"><span class="inline-block w-6 h-px bg-brand-orange opacity-60"></span>Pourquoi OraTECH ?<span class="inline-block w-6 h-px bg-brand-orange opacity-60"></span></p>
    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
     La confiance avant tout
    </h2>
   </div>
-
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-
-   <div class="reveal text-center bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
-    border border-zinc-200 dark:border-white/5 p-8 sm:p-10
-    hover:border-brand-orange/40 dark:hover:border-brand-orange/30 transition-all duration-300 hover:scale-[1.03]">
-    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange text-2xl mb-6">
-     <i class="fa-solid fa-truck-fast"></i>
-    </div>
+   <div class="reveal text-center bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-8 sm:p-10 hover:border-brand-orange/40 dark:hover:border-brand-orange/30 transition-all duration-300 hover:scale-[1.03]">
+    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange text-2xl mb-6"><i class="fa-solid fa-truck-fast"></i></div>
     <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Livraison rapide</h3>
-    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-     Recevez votre smartphone rapidement partout à Port-au-Prince et dans les villes principales d'Haïti.
-    </p>
+    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">Recevez votre smartphone rapidement partout à Port-au-Prince et dans les villes principales d'Haïti.</p>
    </div>
-
-   <div class="reveal text-center bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
-    border border-zinc-200 dark:border-white/5 p-8 sm:p-10
-    hover:border-brand-teal/40 dark:hover:border-brand-teal/30 transition-all duration-300 hover:scale-[1.03]">
-    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-teal/10 text-brand-teal text-2xl mb-6">
-     <i class="fa-solid fa-shield-halved"></i>
-    </div>
+   <div class="reveal text-center bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-8 sm:p-10 hover:border-brand-teal/40 dark:hover:border-brand-teal/30 transition-all duration-300 hover:scale-[1.03]">
+    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-teal/10 text-brand-teal text-2xl mb-6"><i class="fa-solid fa-shield-halved"></i></div>
     <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Garantie assurée</h3>
-    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-     Chaque appareil vendu est couvert par une garantie OraTECH. Achetez en toute sérénité.
-    </p>
+    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">Chaque appareil vendu est couvert par une garantie OraTECH. Achetez en toute sérénité.</p>
    </div>
-
-   <div class="reveal text-center bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl
-    border border-zinc-200 dark:border-white/5 p-8 sm:p-10
-    hover:border-brand-orange/40 dark:hover:border-brand-orange/30 transition-all duration-300 hover:scale-[1.03]">
-    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange text-2xl mb-6">
-     <i class="fa-brands fa-whatsapp"></i>
-    </div>
+   <div class="reveal text-center bg-white/80 dark:bg-surface-card/80 backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-8 sm:p-10 hover:border-brand-orange/40 dark:hover:border-brand-orange/30 transition-all duration-300 hover:scale-[1.03]">
+    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange text-2xl mb-6"><i class="fa-brands fa-whatsapp"></i></div>
     <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Support WhatsApp 24/7</h3>
-    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-     Posez vos questions à tout moment. Notre équipe est disponible sur WhatsApp pour vous accompagner.
-    </p>
+    <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">Posez vos questions à tout moment. Notre équipe est disponible sur WhatsApp pour vous accompagner.</p>
    </div>
-
   </div>
  </div>
 </section>
@@ -1415,12 +1374,9 @@
 
 <!-- ================ AVIS CLIENTS ================ -->
 <section id="avis" class="py-20 md:py-28 bg-white dark:bg-zinc-950 transition-colors duration-500 relative overflow-hidden">
-
  <div class="bg-grid" style="opacity:.4"></div>
  <div class="bg-orb w-72 h-72 top-0 right-[-10%] bg-brand-teal/5 animate-float-slow"></div>
-
  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
   <div class="text-center mb-16 reveal">
    <p class="text-brand-teal text-[11px] font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-2"><span class="inline-block w-6 h-px bg-brand-teal opacity-60"></span>Temoignages<span class="inline-block w-6 h-px bg-brand-teal opacity-60"></span></p>
    <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-[-0.02em] text-zinc-900 dark:text-white leading-[1.05]">
@@ -1432,9 +1388,7 @@
    </p>
   </div>
 
-  <!-- Conteneur des avis Firebase -->
   <div id="avis-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 min-h-[200px]">
-   <!-- Les avis seront injectes ici par JavaScript -->
    <div id="avis-loading" class="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="rounded-2xl border border-zinc-100 dark:border-white/5 p-6 space-y-4 animate-pulse">
      <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-full bg-zinc-200 dark:bg-zinc-800 flex-shrink-0"></div><div class="space-y-2 flex-1"><div class="h-3 bg-zinc-200 dark:bg-zinc-800 rounded-full w-2/3"></div><div class="h-2.5 bg-zinc-100 dark:bg-zinc-700 rounded-full w-1/3"></div></div></div>
@@ -1453,9 +1407,7 @@
     </div>
    </div>
    <div id="avis-empty" class="hidden col-span-full text-center py-12">
-    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 text-2xl mb-4">
-     <i class="fa-regular fa-comment-dots"></i>
-    </div>
+    <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 text-2xl mb-4"><i class="fa-regular fa-comment-dots"></i></div>
     <p class="text-zinc-500 dark:text-zinc-400 text-sm">Soyez le premier a laisser un avis !</p>
    </div>
    <div id="avis-error" class="hidden col-span-full text-center py-12">
@@ -1464,7 +1416,6 @@
    </div>
   </div>
 
-  <!-- Bouton Laisser un avis -->
   <div class="text-center mt-12 reveal">
    <p class="text-zinc-400 dark:text-zinc-500 text-sm mb-5">Vous avez acheté chez OraTECH ? Partagez votre expérience.</p>
    <button onclick="openAvisModal()"
@@ -1476,20 +1427,16 @@
     <i class="fa-solid fa-arrow-right text-sm"></i>
    </button>
   </div>
-
  </div>
 </section>
 
 <!-- ================ CTA — Statue Background ================ -->
 <section class="py-24 md:py-32 relative overflow-hidden">
-
  <div class="bg-statue-cta"></div>
- <div class="absolute inset-0 bg-gradient-to-t from-zinc-50 via-zinc-50/95 to-zinc-50/80
-  dark:from-surface-dark dark:via-surface-dark/85 dark:to-surface-dark/60 z-[1]"></div>
+ <div class="absolute inset-0 bg-gradient-to-t from-zinc-50 via-zinc-50/95 to-zinc-50/80 dark:from-surface-dark dark:via-surface-dark/85 dark:to-surface-dark/60 z-[1]"></div>
  <div class="bg-grid z-[2]"></div>
  <div class="bg-orb w-72 h-72 top-0 left-[20%] bg-brand-orange/8 animate-float z-[1]"></div>
  <div class="bg-orb w-56 h-56 bottom-0 right-[15%] bg-brand-teal/6 animate-float-slow z-[1]"></div>
-
  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
   <div class="reveal">
    <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-[-0.02em] text-zinc-900 dark:text-white leading-[1.05]">
@@ -1528,11 +1475,8 @@
 <footer id="contact"
  class="border-t border-zinc-200 dark:border-white/5
   bg-zinc-50 dark:bg-surface-card transition-colors duration-500 relative overflow-hidden">
-
  <div class="bg-dots" style="opacity:.4"></div>
-
  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
-
   <div class="flex flex-col md:flex-row items-center justify-between gap-8">
    <div class="text-center md:text-left">
     <a href="#" class="text-2xl font-extrabold tracking-tight select-none">
@@ -1546,93 +1490,37 @@
      Port-au-Prince, Haïti
     </p>
    </div>
-
    <div class="flex items-center gap-4">
-    <a href="https://www.instagram.com/oratechofficial?igsh=MWRiNWRjbmplaWZrbg=="
-     target="_blank" rel="noopener" aria-label="Instagram"
-     class="w-11 h-11 flex items-center justify-center rounded-xl
-      bg-zinc-200 dark:bg-zinc-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500
-      text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110">
-     <i class="fa-brands fa-instagram text-lg"></i>
-    </a>
-    <a href="https://www.tiktok.com/@oratechofficial?_r=1&_t=ZS-95vHwkxdD8b"
-     target="_blank" rel="noopener" aria-label="TikTok"
-     class="w-11 h-11 flex items-center justify-center rounded-xl
-      bg-zinc-200 dark:bg-zinc-800 hover:bg-black hover:ring-2 hover:ring-brand-teal
-      text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110">
-     <i class="fa-brands fa-tiktok text-lg"></i>
-    </a>
-    <a href="https://www.facebook.com/share/1PzDiN8584/"
-     target="_blank" rel="noopener" aria-label="Facebook"
-     class="w-11 h-11 flex items-center justify-center rounded-xl
-      bg-zinc-200 dark:bg-zinc-800 hover:bg-blue-600
-      text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110">
-     <i class="fa-brands fa-facebook-f text-lg"></i>
-    </a>
-    <a href="https://wa.me/50946302424"
-     target="_blank" rel="noopener" aria-label="WhatsApp"
-     class="w-11 h-11 flex items-center justify-center rounded-xl
-      bg-zinc-200 dark:bg-zinc-800 hover:bg-green-600
-      text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110">
-     <i class="fa-brands fa-whatsapp text-lg"></i>
-    </a>
+    <a href="https://www.instagram.com/oratechofficial?igsh=MWRiNWRjbmplaWZrbg==" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-instagram text-lg"></i></a>
+    <a href="https://www.tiktok.com/@oratechofficial?_r=1&_t=ZS-95vHwkxdD8b" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-black hover:ring-2 hover:ring-brand-teal text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-tiktok text-lg"></i></a>
+    <a href="https://www.facebook.com/share/1PzDiN8584/" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-blue-600 text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+    <a href="https://wa.me/50946302424" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-200 dark:bg-zinc-800 hover:bg-green-600 text-zinc-500 dark:text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"><i class="fa-brands fa-whatsapp text-lg"></i></a>
    </div>
   </div>
-
-  <!-- ── APPEL DIRECT ── -->
   <div class="mt-10 pt-8 border-t border-zinc-200 dark:border-white/5">
    <p class="text-center text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500 mb-4">
     <i class="fa-solid fa-phone-volume mr-2 text-brand-orange"></i>Contactez-nous directement
    </p>
    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-    <a href="tel:+50946302424"
-     class="group flex items-center gap-3 px-6 py-3 rounded-2xl
-      bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200 dark:border-white/8
-      hover:border-brand-orange/60 hover:bg-brand-orange/5
-      transition-all duration-300 hover:scale-105 min-w-[220px] justify-center">
-     <span class="w-9 h-9 flex items-center justify-center rounded-xl bg-brand-orange/10 group-hover:bg-brand-orange/20 transition-colors">
-      <i class="fa-solid fa-phone text-brand-orange text-sm"></i>
-     </span>
-     <div class="text-left">
-      <p class="text-[10px] text-zinc-400 dark:text-zinc-500 leading-none mb-0.5">Nimewo 1</p>
-      <p class="font-bold text-zinc-800 dark:text-white tracking-wide text-sm">+509 4630 2424</p>
-     </div>
+    <a href="tel:+50946302424" class="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200 dark:border-white/8 hover:border-brand-orange/60 hover:bg-brand-orange/5 transition-all duration-300 hover:scale-105 min-w-[220px] justify-center">
+     <span class="w-9 h-9 flex items-center justify-center rounded-xl bg-brand-orange/10 group-hover:bg-brand-orange/20 transition-colors"><i class="fa-solid fa-phone text-brand-orange text-sm"></i></span>
+     <div class="text-left"><p class="text-[10px] text-zinc-400 dark:text-zinc-500 leading-none mb-0.5">Nimewo 1</p><p class="font-bold text-zinc-800 dark:text-white tracking-wide text-sm">+509 4630 2424</p></div>
     </a>
-    <a href="tel:+50943435376"
-     class="group flex items-center gap-3 px-6 py-3 rounded-2xl
-      bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200 dark:border-white/8
-      hover:border-brand-teal/60 hover:bg-brand-teal/5
-      transition-all duration-300 hover:scale-105 min-w-[220px] justify-center">
-     <span class="w-9 h-9 flex items-center justify-center rounded-xl bg-brand-teal/10 group-hover:bg-brand-teal/20 transition-colors">
-      <i class="fa-solid fa-phone text-brand-teal text-sm"></i>
-     </span>
-     <div class="text-left">
-      <p class="text-[10px] text-zinc-400 dark:text-zinc-500 leading-none mb-0.5">Nimewo 2</p>
-      <p class="font-bold text-zinc-800 dark:text-white tracking-wide text-sm">+509 4343 5376</p>
-     </div>
+    <a href="tel:+50943435376" class="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/70 border border-zinc-200 dark:border-white/8 hover:border-brand-teal/60 hover:bg-brand-teal/5 transition-all duration-300 hover:scale-105 min-w-[220px] justify-center">
+     <span class="w-9 h-9 flex items-center justify-center rounded-xl bg-brand-teal/10 group-hover:bg-brand-teal/20 transition-colors"><i class="fa-solid fa-phone text-brand-teal text-sm"></i></span>
+     <div class="text-left"><p class="text-[10px] text-zinc-400 dark:text-zinc-500 leading-none mb-0.5">Nimewo 2</p><p class="font-bold text-zinc-800 dark:text-white tracking-wide text-sm">+509 4343 5376</p></div>
     </a>
    </div>
   </div>
-
-  <!-- ── TRUST BADGES ── -->
   <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-   <span class="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-    <i class="fa-solid fa-shield-halved text-brand-orange text-[11px]"></i> Produits 100% Originaux
-   </span>
+   <span class="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500"><i class="fa-solid fa-shield-halved text-brand-orange text-[11px]"></i> Produits 100% Originaux</span>
    <span class="w-px h-3 bg-zinc-300 dark:bg-zinc-700 hidden sm:block"></span>
-   <span class="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-    <i class="fa-solid fa-truck-fast text-brand-teal text-[11px]"></i> Livraison à Port-au-Prince
-   </span>
+   <span class="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500"><i class="fa-solid fa-truck-fast text-brand-teal text-[11px]"></i> Livraison à Port-au-Prince</span>
    <span class="w-px h-3 bg-zinc-300 dark:bg-zinc-700 hidden sm:block"></span>
-   <span class="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-    <i class="fa-solid fa-rotate-left text-brand-orange text-[11px]"></i> Garantie & Support
-   </span>
+   <span class="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500"><i class="fa-solid fa-rotate-left text-brand-orange text-[11px]"></i> Garantie & Support</span>
   </div>
-
   <div class="mt-6 pt-6 border-t border-zinc-200 dark:border-white/5 text-center">
-   <p class="text-zinc-400 dark:text-zinc-600 text-sm">
-    &copy; <span id="year"></span> OraTECH. Tout droit réservé.
-   </p>
+   <p class="text-zinc-400 dark:text-zinc-600 text-sm">&copy; <span id="year"></span> OraTECH. Tout droit réservé.</p>
   </div>
  </div>
 </footer>
@@ -1646,20 +1534,8 @@
   <i class="fa-solid fa-cart-shopping"></i>
   <span id="cart-count" style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:#fff;color:#FF5500;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #FF5500;opacity:0;transform:scale(0);transition:all .3s cubic-bezier(.34,1.56,.64,1);"></span>
  </button>
- <a href="https://www.facebook.com/share/1PzDiN8584/"
-  target="_blank" rel="noopener" aria-label="Facebook"
-  class="w-14 h-14 flex items-center justify-center rounded-full
-   bg-blue-600 hover:bg-blue-700 text-white text-xl shadow-lg shadow-blue-600/30
-   hover:scale-110 transition-all duration-300">
-  <i class="fa-brands fa-facebook-f"></i>
- </a>
- <a href="https://wa.me/50946302424?text=Bonjou!%20Mwen%20ta%20renmen%20gen%20plis%20enf%C3%B2masyon%20sou%20pwodui%20OraTECH%20yo."
-  target="_blank" rel="noopener" aria-label="WhatsApp"
-  class="w-14 h-14 flex items-center justify-center rounded-full
-   bg-green-500 hover:bg-green-600 text-white text-2xl shadow-lg shadow-green-500/30
-   hover:scale-110 animate-pulse-slow transition-all duration-300">
-  <i class="fa-brands fa-whatsapp"></i>
- </a>
+ <a href="https://www.facebook.com/share/1PzDiN8584/" target="_blank" rel="noopener" aria-label="Facebook" class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xl shadow-lg shadow-blue-600/30 hover:scale-110 transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+ <a href="https://wa.me/50946302424?text=Bonjou!%20Mwen%20ta%20renmen%20gen%20plis%20enf%C3%B2masyon%20sou%20pwodui%20OraTECH%20yo." target="_blank" rel="noopener" aria-label="WhatsApp" class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white text-2xl shadow-lg shadow-green-500/30 hover:scale-110 animate-pulse-slow transition-all duration-300"><i class="fa-brands fa-whatsapp"></i></a>
 </div>
 
 
@@ -1710,72 +1586,132 @@
   if (searchInput.classList.contains('expanded')) searchInput.focus();
  });
  document.addEventListener('click', e => {
-  if (!searchBtn.contains(e.target) && !searchInput.contains(e.target))
+  if (!searchBtn.contains(e.target) && !searchInput.contains(e.target)) {
    searchInput.classList.remove('expanded');
+   searchInput.blur();
+  }
  });
-    searchInput.blur();
+
  // ✅ RESET RECHERCHE QUAND ON CLIQUE SUR LE LOGO OU ACCUEIL
  function resetSearchAndScroll() {
   searchInput.value = '';
   searchInput.dispatchEvent(new Event('input'));
   searchInput.blur();
   searchInput.classList.remove('expanded');
- }
- // FIX #1 : Filtrage live + message aucun résultat + défilement automatique
- searchInput.addEventListener('input', function() {
-  var q = this.value.trim().toLowerCase();
-  var foundNouveau = 0, foundCatalogue = 0;
-
-  document.querySelectorAll('.nouveautes-card').forEach(function(card) {
-   var txt = card.textContent.toLowerCase();
-   var visible = (!q || txt.includes(q));
-   card.style.display = visible ? '' : 'none';
-   if (visible) foundNouveau++;
+    document.querySelectorAll('.nouveautes-card, .reveal.group').forEach(function(c) {
+   c.style.display = '';
   });
-
-  document.querySelectorAll('.reveal.group').forEach(function(card) {
-   var txt = card.textContent.toLowerCase();
-   var visible = (!q || txt.includes(q));
-   card.style.display = visible ? '' : 'none';
-   if (visible) foundCatalogue++;
-  });
-
   var noResult = document.getElementById('no-result');
-  var aucun = (q && foundNouveau === 0 && foundCatalogue === 0);
-  if (noResult) {
-   noResult.style.display = aucun ? 'block' : 'none';
-  }
-
-  // ✅ Défilement automatique vers le résultat
-  if (q) {
-   if (aucun) {
-    // Va directement au message "Produit non trouvé"
-    if (noResult) noResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
-   } else {
-    // Va au premier produit visible
-    var premier = document.querySelector('.nouveautes-card:not([style*="display: none"]), .reveal.group:not([style*="display: none"])');
-    if (premier) {
-     premier.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-   }
-   if (q.length === 1) {
-    var sec = document.getElementById('produits');
-    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-   }
-  }
- });
- searchInput.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-   this.value = '';
-   this.dispatchEvent(new Event('input'));
-   this.classList.remove('expanded');
-  }
- });
-
-  // ✅ Lier le reset au clic sur le logo OraTECH et le lien Accueil
+  if (noResult) noResult.style.display = 'none';
+ }
  document.querySelectorAll('a[href="#hero"]').forEach(function(link) {
   link.addEventListener('click', resetSearchAndScroll);
  });
+
+ // ✅ Fermer le clavier quand on fait défiler la page (sauf si on est en train de taper)
+ var searchScrollTimer;
+ searchInput.addEventListener('input', function() {
+  clearTimeout(searchScrollTimer);
+  searchScrollTimer = setTimeout(function() {
+   // après 500ms sans taper, le scroll pourra fermer le clavier
+  }, 500);
+ });
+ window.addEventListener('scroll', function() {
+  if (searchScrollTimer) return;
+  if (document.activeElement === searchInput) searchInput.blur();
+ });
+
+ // FIX #1 : Recherche sur validation (Enter) avec Quick Links
+   var quickLinksHTML = `
+  <div id="quick-links" style="display:none; position:absolute; top:100%; left:0; right:0; border-radius:0 0 1rem 1rem; box-shadow:0 8px 30px rgba(0,0,0,.12); z-index:100; padding:12px; margin-top:4px; background:#fff; color:#333;" class="dark:bg-zinc-900 dark:text-zinc-200">
+   <p class="text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Accès rapides</p>
+   <a href="javascript:void(0)" onclick="filterAndScroll('iPhone')" class="block px-3 py-2 rounded-lg text-inherit no-underline font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">📱 iPhone</a>
+   <a href="javascript:void(0)" onclick="filterAndScroll('Samsung')" class="block px-3 py-2 rounded-lg text-inherit no-underline font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">📱 Samsung</a>
+   <a href="javascript:void(0)" onclick="filterAndScroll('Google Pixel')" class="block px-3 py-2 rounded-lg text-inherit no-underline font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">📱 Google Pixel</a>
+      <a href="#gadgets" onclick="event.preventDefault(); document.querySelector('#gadgets').scrollIntoView({behavior:'smooth'}); searchInput.value=''; searchInput.classList.remove('expanded'); searchInput.blur(); quickLinks.style.display='none';" class="block px-3 py-2 rounded-lg text-inherit no-underline font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">🔌 Gadgets & Accessoires</a>
+  </div>
+ `;
+ searchBtn.insertAdjacentHTML('afterend', quickLinksHTML);
+ var quickLinks = document.getElementById('quick-links');
+
+ searchInput.addEventListener('focus', function() {
+  if (this.classList.contains('expanded')) quickLinks.style.display = 'block';
+ });
+ searchInput.addEventListener('blur', function() {
+  setTimeout(function() { quickLinks.style.display = 'none'; }, 200);
+ });
+ searchInput.addEventListener('input', function() {
+  quickLinks.style.display = this.classList.contains('expanded') ? 'block' : 'none';
+ });
+
+ searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+   e.preventDefault();
+   var q = this.value.trim().toLowerCase();
+   quickLinks.style.display = 'none';
+   this.blur();
+
+   document.querySelectorAll('.nouveautes-card, .reveal.group').forEach(function(c) {
+    c.style.display = '';
+   });
+   var noResult = document.getElementById('no-result');
+   if (noResult) noResult.style.display = 'none';
+
+   if (q) {
+    var found = 0;
+    document.querySelectorAll('.nouveautes-card').forEach(function(card) {
+     var txt = card.textContent.toLowerCase();
+     var visible = txt.includes(q);
+     card.style.display = visible ? '' : 'none';
+     if (visible) found++;
+    });
+    document.querySelectorAll('.reveal.group').forEach(function(card) {
+     var txt = card.textContent.toLowerCase();
+     var visible = txt.includes(q);
+     card.style.display = visible ? '' : 'none';
+     if (visible) found++;
+    });
+
+    if (found === 0) {
+     if (noResult) {
+      noResult.style.display = 'block';
+      noResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+    } else {
+     var premier = document.querySelector('.nouveautes-card:not([style*="display: none"]), .reveal.group:not([style*="display: none"])');
+     if (premier) {
+      premier.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+    }
+   }
+  }
+ });
+ // ✅ Filtrer au clic sur un Quick Link
+ function filterAndScroll(filter) {
+  var q = filter.toLowerCase();
+  // Masque tout d'abord
+  document.querySelectorAll('.nouveautes-card, .reveal.group').forEach(function(c) {
+   var txt = c.textContent.toLowerCase();
+   c.style.display = txt.includes(q) ? '' : 'none';
+  });
+  // Vérifie si rien trouvé
+  var found = document.querySelector('.nouveautes-card:not([style*="display: none"]), .reveal.group:not([style*="display: none"])');
+  var noResult = document.getElementById('no-result');
+  if (!found) {
+   if (noResult) {
+    noResult.style.display = 'block';
+    noResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+   }
+  } else {
+   if (noResult) noResult.style.display = 'none';
+   found.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  // Ferme le panneau de recherche et vide l'input
+  searchInput.value = '';
+  searchInput.classList.remove('expanded');
+  searchInput.blur();
+  quickLinks.style.display = 'none';
+ }
  
  // ——— Mobile Menu ———
  const menuBtn = document.getElementById('menuToggle');
@@ -1815,22 +1751,7 @@
   });
  }, { threshold: 0.5 });
  document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
- // ✅ Fermer le clavier quand on fait défiler la page (sauf si on est en train de taper)
- var searchScrollTimer;
- searchInput.addEventListener('input', function() {
-  clearTimeout(searchScrollTimer);
-  // On ne ferme pas le clavier pendant 500ms après la dernière frappe
-  searchScrollTimer = setTimeout(function() {
-   // Après ce délai, le scroll pourra fermer le clavier
-  }, 500);
- });
 
- window.addEventListener('scroll', function() {
-  // Ne rien faire si un timer de frappe est actif
-  if (searchScrollTimer) return;
-  if (document.activeElement === searchInput) searchInput.blur();
- });
- 
  // ——— Header shadow + Back to Top ———
  const header = document.getElementById('mainHeader');
  const btt = document.getElementById('backToTop');
@@ -1848,7 +1769,7 @@
  });
  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
- // ——— Lightbox — FIX #3 : exposé sur window + ajout onclick nouveautés ———
+ // ——— Lightbox ———
  function openLightbox(src) {
   var lb = document.getElementById('lightbox');
   document.getElementById('lbImg').src = src;
@@ -1862,20 +1783,14 @@
  window.openLightbox  = openLightbox;
  window.closeLightbox = closeLightbox;
  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
- // FIX #3 : rendre les images des nouveautes-card cliquables aussi
  document.querySelectorAll('.nouveautes-card img').forEach(function(img) {
   img.style.cursor = 'zoom-in';
   img.addEventListener('click', function() { openLightbox(this.src); });
  });
 
-
  // ============================================================
  // FIREBASE — AVIS CLIENTS
  // ============================================================
-
- // ——— CONFIGURATION FIREBASE ———
- // Remplace ces valeurs par celles de ton projet Firebase
- // (Console Firebase > Parametres du projet > SDK Firebase)
  const firebaseConfig = {
   apiKey: "AIzaSyBqvOS_QH3L7RIe_L9IgN29nSATvcDAYFg",
   authDomain: "monavisapp-40279.firebaseapp.com",
@@ -1886,7 +1801,6 @@
   measurementId: "G-FJ4T1Q7X8Q"
  };
 
- // Initialiser Firebase seulement si la config est remplie
  let db = null;
  let avisCollection = null;
  const configFilled = firebaseConfig.apiKey !== "TON_API_KEY_ICI";
@@ -1897,14 +1811,12 @@
   avisCollection = db.collection("avis");
  }
 
- // ——— CHARGER LES AVIS ———
  function loadAvis() {
   const listContainer = document.getElementById("avis-list");
   const loadingEl = document.getElementById("avis-loading");
   const emptyEl = document.getElementById("avis-empty");
   const errorEl = document.getElementById("avis-error");
 
-  // Si Firebase n'est pas configure, montrer l'etat vide
   if (!db || !avisCollection) {
    loadingEl.classList.add("hidden");
    emptyEl.classList.remove("hidden");
@@ -1930,12 +1842,10 @@
      return;
     }
 
-    // Vider et reconstruire
     listContainer.innerHTML = "";
     avisData.forEach(a => {
      const card = buildAvisCard(a);
      listContainer.appendChild(card);
-     // Declencher l'animation reveal sur les cartes injectees
      obs.observe(card);
     });
    })
@@ -1946,7 +1856,6 @@
    });
  }
 
- // ——— CONSTRUIRE UNE CARTE AVIS ———
  function buildAvisCard(data) {
   const div = document.createElement("div");
   div.className = "reveal flex flex-col bg-white dark:bg-surface-card backdrop-blur-sm rounded-2xl border border-zinc-200 dark:border-white/5 p-5 sm:p-6 hover:shadow-xl hover:shadow-brand-orange/5 hover:-translate-y-1 transition-all duration-300";
@@ -1956,10 +1865,8 @@
   const commentaire = escapeHtml(data.commentaire || "");
   const rating = Math.min(5, Math.max(1, parseInt(data.rating) || 5));
 
-  // Generer les initiales
   const initials = nom.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
 
-  // Couleurs du degrade pour l'avatar
   const gradients = [
    "from-brand-orange to-brand-teal",
    "from-brand-teal to-blue-500",
@@ -1969,7 +1876,6 @@
   ];
   const grad = gradients[initials.charCodeAt(0) % gradients.length];
 
-  // Etoiles
   let starsHtml = "";
   for (let i = 1; i <= 5; i++) {
    if (i <= rating) {
@@ -1981,7 +1887,6 @@
    }
   }
 
-  // Date
   let dateStr = "";
   if (data.date && data.date.toDate) {
    const d = data.date.toDate();
@@ -1989,7 +1894,6 @@
   }
 
   div.innerHTML = `
-   <!-- En-tête : pastille + nom + étoiles -->
    <div class="flex items-start justify-between gap-3 mb-4">
     <div class="flex items-center gap-3">
      <div class="w-11 h-11 rounded-full bg-gradient-to-br ${grad} flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-lg">${initials}</div>
@@ -2000,9 +1904,7 @@
     </div>
     <div class="flex items-center gap-0.5 text-amber-400 flex-shrink-0 mt-0.5">${starsHtml}</div>
    </div>
-   <!-- Commentaire -->
    <p class="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-4 border-l-2 border-brand-orange/30 pl-3 italic">"${commentaire}"</p>
-   <!-- Pied : achat + date -->
    <div class="flex items-center gap-2 mt-auto">
     <span class="inline-flex items-center gap-1.5 text-[11px] text-brand-teal font-semibold bg-brand-teal/10 px-2.5 py-1 rounded-full">
      <i class="fa-solid fa-circle-check text-[10px]"></i> Achte nan OraTECH
@@ -2010,18 +1912,15 @@
     ${dateStr ? `<span class="text-[11px] text-zinc-400 ml-auto">${dateStr}</span>` : ""}
    </div>
   `;
-
   return div;
  }
 
- // ——— SECURITE HTML ———
  function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
  }
 
- // ——— MODAL ———
  let currentRating = 0;
 
  function openAvisModal() {
@@ -2057,39 +1956,30 @@
   document.getElementById("charCount").textContent = "0";
  }
 
- // Compteur de caracteres
  document.getElementById("avisCommentaire")?.addEventListener("input", function() {
   document.getElementById("charCount").textContent = this.value.length;
  });
 
- // Fermer avec Echap
  document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeAvisModal();
  });
 
- // ——— SOUMETTRE UN AVIS ———
  function submitAvis(e) {
   e.preventDefault();
-
   if (currentRating === 0) {
    document.getElementById("ratingError").classList.remove("hidden");
    return;
   }
-
   const nom = document.getElementById("avisNom").value.trim();
   const ville = document.getElementById("avisVille").value.trim();
   const commentaire = document.getElementById("avisCommentaire").value.trim();
-
   if (!nom || !ville || !commentaire) return;
-
   const btn = document.getElementById("avisSubmitBtn");
   const btnText = document.getElementById("avisSubmitText");
   const originalText = btnText.textContent;
-
   btn.disabled = true;
   btnText.textContent = "Voye...";
 
-  // Si Firebase n'est pas configure, stocker localement
   if (!avisCollection) {
    setTimeout(() => {
     btn.disabled = false;
@@ -2122,7 +2012,6 @@
   });
  }
 
- // ——— CARD GLOW (mouse tracking) ———
  document.querySelectorAll('.reveal.group').forEach(card => {
   card.classList.add('card-glow');
   card.addEventListener('mousemove', e => {
@@ -2132,7 +2021,6 @@
   });
  });
 
- // ——— TOAST ———
  function showToast(msg) {
   const toast = document.createElement("div");
   toast.textContent = msg;
@@ -2149,12 +2037,8 @@
   }, 3500);
  }
 
- // Charger les avis au demarrage
  document.addEventListener("DOMContentLoaded", loadAvis);
 </script>
-
-
-
 
 <!-- ================ MODAL AVIS ================ -->
 <div id="avisModal" style="display:none;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px;"
@@ -2300,8 +2184,6 @@
  .cart-fab-shake { animation:cartShake .5s ease !important; }
 </style>
 
-
-
 <div id="cart-toast"><i class="fa-solid fa-circle-check"></i><span id="cart-toast-text"></span></div>
 
 <div id="cart-drawer">
@@ -2403,9 +2285,7 @@
   window.open("https://wa.me/50946302424?text=" + encodeURIComponent(msg), "_blank");
  }
 
- // FIX #2 : Patch boutons Acheter -> Ajouter au panier
  function patchButtons() {
-  // --- Nouveautés ---
   document.querySelectorAll(".nouveautes-card").forEach(function(card) {
    var h3    = card.querySelector("h3");
    var imgEl = card.querySelector("img");
@@ -2428,7 +2308,6 @@
    link.parentNode.replaceChild(btn, link);
   });
 
-  // --- Catalogue (.reveal) ---
   document.querySelectorAll(".reveal").forEach(function(card) {
    var h3    = card.querySelector("h3");
    var imgEl = card.querySelector("img[onclick]");
@@ -2455,13 +2334,11 @@
   });
  }
 
- // Exposer les fonctions sur window pour garantir l'accès global
  window.addToCart      = addToCart;
  window.toggleCart     = toggleCart;
  window.clearCart      = clearCart;
  window.checkoutWhatsApp = checkoutWhatsApp;
 
- // Exécuter au chargement - DOMContentLoaded OU immédiatement si DOM déjà prêt
  function initCart() { renderCart(); patchButtons(); }
  if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initCart);
