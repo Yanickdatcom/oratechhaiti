@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="ht" class="scroll-smooth">
-<script>
- // Auto-detect dark/light based on OS preference, with manual override saved in localStorage
- (function(){
-  var stored = localStorage.getItem('oratech_theme');
-  if (stored === 'dark') {
-   document.documentElement.classList.add('dark');
-  } else if (stored === 'light') {
-   document.documentElement.classList.remove('dark');
-  } else {
-   // No stored preference — use OS setting
-   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.classList.add('dark');
-   }
-  }
- })();
-</script>
 <head>
  <meta charset="UTF-8" />
+
+ <!-- DÉTECTION DU MODE SOMBRE / CLAIR AU BON ENDROIT -->
+ <script>
+  (function(){
+   var stored = localStorage.getItem('oratech_theme');
+   if (stored === 'dark') {
+    document.documentElement.classList.add('dark');
+   } else if (stored === 'light') {
+    document.documentElement.classList.remove('dark');
+   } else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+     document.documentElement.classList.add('dark');
+    }
+   }
+  })();
+ </script>
+
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
  <title>ORA — La tech que tu mérites.</title>
 
@@ -87,6 +88,16 @@
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #C87941; border-radius: 999px; }
+
+  /* ===== LA TOUCHE PREMIUM ABSOLUE ===== */
+  ::selection { background: #C87941; color: #ffffff; }
+  ::-moz-selection { background: #C87941; color: #ffffff; }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 
   /* ===== PRELOADER (PREMIUM UPGRADE) ===== */
   #preloader {
@@ -281,8 +292,18 @@
   transition-all duration-500 shadow-sm dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20"> <!-- h-20 au lieu de h-16 -->
 
-  <a href="#hero" class="flex-shrink-0 select-none drop-shadow-sm transition-transform hover:scale-105 duration-300">
-   <img src="https://i.ibb.co/gLfhq4LK/file-00000000f98071f694b57ac331659f53.png" alt="ORA" style="height:58px;max-height:58px;width:auto;object-fit:contain;display:block;" />
+  <a href="#hero" aria-label="Accueil ORA" class="flex-shrink-0 select-none transition-transform hover:scale-105 duration-300 flex items-center">
+   <!-- Logo ORA (Clone exact, vectoriel et premium) -->
+   <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));">
+    <!-- rotate(-35 50 50) place l'ouverture exactement en haut à droite -->
+    <circle cx="50" cy="50" r="40" stroke="url(#ora-grad)" stroke-width="8.5" stroke-dasharray="234 260" transform="rotate(-35 50 50)" stroke-linecap="butt" />
+    <defs>
+     <linearGradient id="ora-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e49b5d" />
+      <stop offset="1" stop-color="#C87941" />
+     </linearGradient>
+    </defs>
+   </svg>
   </a>
 
   <!-- Menu plus lisible et aéré -->
@@ -2149,7 +2170,6 @@
   const short = name.length > 20 ? name.slice(0, 20) + "..." : name;
   const msg = "🛒 " + short + " ajouté au panier";
   
-  // Utilisation de la nouvelle fonction showToast stylisée (Premium)
   const toast = document.createElement("div");
   toast.textContent = msg;
   toast.style.cssText = "position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(30px);background:rgba(200,121,65,0.95);backdrop-filter:blur(10px);color:#fff;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:800;letter-spacing:0.02em;box-shadow:0 15px 40px rgba(200,121,65,0.4);z-index:99999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);white-space:nowrap;";
