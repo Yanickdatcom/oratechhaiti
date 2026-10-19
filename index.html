@@ -29,9 +29,15 @@
  <meta property="og:url" content="https://oratechhaiti.vercel.app/" />
  <meta property="og:title" content="ORA — La tech que tu mérites." />
  <meta property="og:description" content="Smartphones neufs, débloqués et originaux à Port-au-Prince. iPhone, Samsung, Pixel au meilleur prix en Haïti." />
+ <meta property="og:image" content="https://oratechhaiti.vercel.app/images/ora-logo.png" />
+ <meta property="og:image:width" content="1254" />
+ <meta property="og:image:height" content="1254" />
  <meta name="twitter:card" content="summary" />
  <meta name="twitter:title" content="ORA — La tech que tu mérites." />
  <meta name="twitter:description" content="Smartphones neufs, débloqués et originaux à Port-au-Prince. iPhone, Samsung, Pixel au meilleur prix en Haïti." />
+ <meta name="twitter:image" content="https://oratechhaiti.vercel.app/images/ora-logo.png" />
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23CF7238' d='M85.98 18.23A48 48 0 1 1 80.82 13.2L75.36 18.81A40.2 40.2 0 1 0 80.52 23.83Z'/%3E%3C/svg%3E" />
+ <link rel="apple-touch-icon" href="images/ora-logo.png" />
  <meta name="theme-color" content="#F3F3F1" media="(prefers-color-scheme: light)" />
  <meta name="theme-color" content="#0E0E0E" media="(prefers-color-scheme: dark)" />
 
@@ -39,6 +45,8 @@
  <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+ <!-- Jost, seulement les lettres du logo et du slogan (fichier minuscule) -->
+ <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400&text=ORALatechqum%C3%A9rs%20&display=swap" rel="stylesheet" />
 
  <!-- Icônes -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -52,7 +60,7 @@
    --surface: #E6E5E2;
    --ink: #121212;
    --muted: #595957;
-   --accent: #C87941;          /* cuivre ORA (logo) */
+   --accent: #CF7238;          /* cuivre ORA, mesuré sur le logo officiel */
    --accent-strong: #9E5726;   /* boutons : texte blanc lisible */
    --accent-hover: #8A4B20;
    --accent-ink: #FFFFFF;
@@ -67,6 +75,7 @@
    --wa-meta: #667781;
 
    --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+   --font-logo: "Jost", "Futura", "Century Gothic", sans-serif; /* uniquement pour le logo */
    --step-small: 0.875rem;
    --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
    --step-lead: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
@@ -87,10 +96,10 @@
    --surface: #1B1B1A;
    --ink: #F1F0EE;
    --muted: #A3A29F;
-   --accent-strong: #D08850;
-   --accent-hover: #DE9A63;
+   --accent-strong: #CF7238;
+   --accent-hover: #DA8350;
    --accent-ink: #140B05;
-   --accent-text: #D9925C;
+   --accent-text: #E08A52;
    --field: #F1F0EE;
    --field-ink: #121212;
    --field-muted: #595957;
@@ -168,7 +177,7 @@
   .nav { display: flex; align-items: center; height: var(--header-h); gap: 8px; }
   .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
   .brand svg { color: var(--accent); flex-shrink: 0; }
-  .brand-name { font-size: 1.375rem; font-weight: 800; font-stretch: 112%; letter-spacing: -0.02em; }
+  .brand-name { font-family: var(--font-logo); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.16em; margin-right: -0.16em; line-height: 1; }
   .nav-links { display: flex; gap: 28px; margin-right: 20px; }
   .nav-links a { text-decoration: none; font-size: 0.9375rem; font-weight: 550; color: var(--muted); transition: color 160ms ease; }
   @media (hover: hover) and (pointer: fine) { .nav-links a:hover { color: var(--ink); } }
@@ -442,7 +451,9 @@
   /* ===================================================================
      FIN : contact sur fond cuivre
      =================================================================== */
-  .end { background: var(--accent-strong); color: var(--accent-ink); padding-block: var(--section) 32px; }
+  /* Fond au cuivre exact du logo, texte noir comme le fond du logo */
+  .end { --accent-ink: #140B05; --accent-strong: #CF7238; background: var(--accent); color: #140B05; padding-block: var(--section) 32px; }
+  .end :focus-visible { outline-color: #140B05; }
   .end-title { font-size: var(--step-display); line-height: 0.95; letter-spacing: -0.04em; font-weight: 760; font-stretch: 106%; max-width: 12ch; margin-left: -0.04em; }
   .end-grid { margin-top: clamp(2.5rem, 5vw, 4.5rem); row-gap: 40px; }
   .end-phones { grid-column: 1 / span 7; display: grid; gap: 20px; }
@@ -454,8 +465,12 @@
   .btn-invert { background: var(--accent-ink); color: var(--accent-strong); align-self: start; justify-self: start; }
   .socials { display: flex; flex-wrap: wrap; gap: 8px 20px; }
   .socials a { font-weight: 650; text-underline-offset: 0.18em; }
-  .end-foot { margin-top: clamp(4rem, 8vw, 7rem); display: flex; justify-content: space-between; align-items: baseline; gap: 12px 24px; flex-wrap: wrap; }
-  .end-slogan { font-size: clamp(1.5rem, 1rem + 2vw, 2.75rem); font-weight: 740; font-stretch: 106%; letter-spacing: -0.03em; line-height: 1; }
+  .end-foot { margin-top: clamp(4rem, 8vw, 7rem); display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 24px; flex-wrap: wrap; }
+  .lockup { display: flex; align-items: center; gap: clamp(16px, 2vw, 28px); }
+  .lockup-ring { width: clamp(64px, 7vw, 104px); height: auto; aspect-ratio: 1; flex-shrink: 0; }
+  .lockup-text { display: grid; gap: 10px; font-family: var(--font-logo); font-weight: 400; }
+  .lockup-name { font-size: clamp(2.5rem, 1.6rem + 3vw, 4.5rem); letter-spacing: 0.16em; line-height: 0.8; }
+  .lockup-slogan { font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.125rem); letter-spacing: 0.14em; }
   .end-legal { font-size: 0.875rem; opacity: 0.85; }
   @media (max-width: 899px) { .end-phones, .end-info { grid-column: 1 / -1; } }
 
@@ -585,14 +600,19 @@
 
 <body>
 
+<!-- Logo ORA : l'anneau ouvert, redessiné d'après le logo officiel -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+ <symbol id="ora-ring" viewBox="0 0 100 100">
+  <path fill="currentColor" d="M85.98 18.23A48 48 0 1 1 80.82 13.2L75.36 18.81A40.2 40.2 0 1 0 80.52 23.83Z" />
+ </symbol>
+</svg>
+
 <!-- ================ EN-TÊTE ================ -->
 <header class="site-header" id="mainHeader">
  <div class="wrap">
   <div class="nav">
    <a href="#hero" class="brand" aria-label="ORA, accueil">
-    <svg width="34" height="34" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-     <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="12" stroke-dasharray="210 239" transform="rotate(-35 50 50)" />
-    </svg>
+    <svg class="ora-ring" width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><use href="#ora-ring" /></svg>
     <span class="brand-name">ORA</span>
    </a>
 
@@ -787,8 +807,8 @@
     </div>
    </article>
 
-   <article class="product rise" data-brand="iphone" data-name="iPhone 14 Pro" data-price="520" data-currency="USD" data-img="https://i.ibb.co/MyhYDSXq/file-000000003f7c722f9f99f1aad7722959.png">
-    <button class="product-media" type="button" aria-label="Agrandir la photo : iPhone 14 Pro"><img src="https://i.ibb.co/MyhYDSXq/file-000000003f7c722f9f99f1aad7722959.png" alt="iPhone 14 Pro" loading="lazy" decoding="async" width="400" height="400" /></button>
+   <article class="product rise" data-brand="iphone" data-name="iPhone 14 Pro" data-price="520" data-currency="USD" data-img="images/iphone-14-pro.png">
+    <button class="product-media" type="button" aria-label="Agrandir la photo : iPhone 14 Pro"><img src="images/iphone-14-pro.png" alt="iPhone 14 Pro, noir sidéral" loading="lazy" decoding="async" width="1440" height="1920" /></button>
     <div class="product-body">
      <h3>iPhone 14 Pro</h3>
      <p class="product-meta">256 Go · Dynamic Island</p>
@@ -1055,7 +1075,10 @@
    </div>
   </div>
   <div class="end-foot">
-   <p class="end-slogan">ORA. La tech que tu mérites.</p>
+   <p class="lockup" aria-label="ORA. La tech que tu mérites.">
+    <svg class="lockup-ring" viewBox="0 0 100 100" aria-hidden="true"><use href="#ora-ring" /></svg>
+    <span class="lockup-text" aria-hidden="true"><span class="lockup-name">ORA</span><span class="lockup-slogan">La tech que tu mérites</span></span>
+   </p>
    <p class="end-legal">&copy; <span id="year">2026</span> ORA. Tous droits réservés.</p>
   </div>
  </div>
