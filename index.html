@@ -577,6 +577,19 @@
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
   /* ===================================================================
+     COINS ARRONDIS (un seul rayon, grand, partout)
+     =================================================================== */
+  :root { --radius: 24px; --radius-small: 14px; }
+  .stage, .product-media, .film video, details, .service, .review, .review-skeleton,
+  .row-product, .dialog, #lightbox img { border-radius: var(--radius); }
+  details, .row-product, .dialog { overflow: hidden; }
+  .row-product .product-media, .cart-item, .field input, .field textarea, .star-btn { border-radius: var(--radius-small); }
+  .cart-item img { border-radius: 10px; }
+  .pay span { border-radius: 8px; }
+  .bubble { border-radius: 22px 22px 6px 22px; }
+  @media (max-width: 899px) { :root { --radius: 20px; } }
+
+  /* ===================================================================
      ENTRÉES (une fois, au défilement)
      =================================================================== */
   .js .rise { opacity: 0; transform: translateY(20px); }
