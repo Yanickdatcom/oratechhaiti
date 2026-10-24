@@ -3,124 +3,90 @@
 <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <script>document.documentElement.classList.add('js');</script>
 
- <!-- Thème clair / sombre + marqueur JS (avant le premier rendu) -->
- <script>
-  (function () {
-   var root = document.documentElement;
-   root.classList.add('js');
-   var stored = null;
-   try { stored = localStorage.getItem('oratech_theme'); } catch (e) {}
-   if (stored === 'dark' || (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    root.classList.add('dark');
-   }
-  })();
- </script>
-
- <title>ORA — La tech que tu mérites.</title>
+ <title>ORA — Smartphones originaux à Port-au-Prince</title>
 
  <!-- SEO -->
- <meta name="description" content="ORA — Achète ton smartphone neuf, débloqué et original à Port-au-Prince, Haïti. iPhone, Samsung, Google Pixel au meilleur prix. Livraison rapide partout en Haïti." />
- <meta name="keywords" content="smartphone Haïti, téléphone Port-au-Prince, iPhone Haïti, Samsung Haïti, Google Pixel Haïti, acheter iPhone Haiti, telephone debloque haiti, ORA, smartphone original haiti, meilleur prix telephone haiti, iphone 16 haiti, samsung galaxy haiti, livraison telephone haiti" />
+ <meta name="description" content="ORA — Achetez votre smartphone neuf, débloqué et original à Port-au-Prince, Haïti. iPhone, Samsung, Google Pixel. Livraison rapide partout en Haïti." />
+ <meta name="keywords" content="smartphone Haïti, téléphone Port-au-Prince, iPhone Haïti, Samsung Haïti, Google Pixel Haïti, acheter iPhone Haiti, telephone debloque haiti, ORA, smartphone original haiti, iphone 16 haiti, samsung galaxy haiti, livraison telephone haiti" />
  <meta name="robots" content="index, follow" />
  <meta name="google-site-verification" content="BHYOEO0huqkx1m4_7gfhvWDP9D5CKEPkvXh_D6Sm_W8" />
  <link rel="canonical" href="https://oratechhaiti.vercel.app/" />
  <meta property="og:type" content="website" />
  <meta property="og:url" content="https://oratechhaiti.vercel.app/" />
- <meta property="og:title" content="ORA — La tech que tu mérites." />
- <meta property="og:description" content="Smartphones neufs, débloqués et originaux à Port-au-Prince. iPhone, Samsung, Pixel au meilleur prix en Haïti." />
- <meta property="og:image" content="https://oratechhaiti.vercel.app/images/ora-logo.png" />
- <meta property="og:image:width" content="1254" />
- <meta property="og:image:height" content="1254" />
- <meta name="twitter:card" content="summary" />
- <meta name="twitter:title" content="ORA — La tech que tu mérites." />
- <meta name="twitter:description" content="Smartphones neufs, débloqués et originaux à Port-au-Prince. iPhone, Samsung, Pixel au meilleur prix en Haïti." />
- <meta name="twitter:image" content="https://oratechhaiti.vercel.app/images/ora-logo.png" />
- <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23CF7238' d='M85.98 18.23A48 48 0 1 1 80.82 13.2L75.36 18.81A40.2 40.2 0 1 0 80.52 23.83Z'/%3E%3C/svg%3E" />
- <link rel="apple-touch-icon" href="images/ora-logo.png" />
- <meta name="theme-color" content="#F3F3F1" media="(prefers-color-scheme: light)" />
- <meta name="theme-color" content="#0E0E0E" media="(prefers-color-scheme: dark)" />
+ <meta property="og:title" content="ORA — La tech, en clair." />
+ <meta property="og:description" content="Smartphones neufs, débloqués et originaux à Port-au-Prince. iPhone, Samsung, Pixel." />
+ <meta property="og:image" content="https://oratechhaiti.vercel.app/images/ora-partage.png" />
+ <meta property="og:image:width" content="1200" />
+ <meta property="og:image:height" content="630" />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:title" content="ORA — La tech, en clair." />
+ <meta name="twitter:description" content="Smartphones neufs, débloqués et originaux à Port-au-Prince. iPhone, Samsung, Pixel." />
+ <meta name="twitter:image" content="https://oratechhaiti.vercel.app/images/ora-partage.png" />
+ <!-- Favicon : symbole petite taille, issu de logo/ora-logo.js (charte v3.1) -->
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%23B87333' d='M10.9629 2.6281A6 6 0 1 1 9.3719 1.0371L8.2854 2.1236A4.5 4.5 0 1 0 9.8764 3.7146Z'/%3E%3C/svg%3E" />
+ <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+ <meta name="theme-color" content="#0A0A0A" />
+ <meta name="color-scheme" content="dark" />
 
- <!-- Police : Archivo (une seule famille, largeur variable) -->
+ <!-- Police unique de la charte : Jost -->
  <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
- <!-- Jost, seulement les lettres du logo et du slogan (fichier minuscule) -->
- <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400&text=ORALatechqum%C3%A9rs%20&display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet" />
 
  <!-- Icônes -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
  <style>
   /* ===================================================================
-     JETONS : couleurs, typo, espacements, mouvement
+     JETONS — charte ORA v3.1 (§5 et §10 bis)
+     Palette : noir #0A0A0A, blanc cassé #FAFAFA, cuivre #B87333,
+     gris neutre #8A8A8A. Surfaces = voiles de blanc cassé (4 % / 8 %).
      =================================================================== */
   :root {
-   --ground: #F3F3F1;
-   --surface: #E6E5E2;
-   --ink: #121212;
-   --muted: #595957;
-   --accent: #CF7238;          /* cuivre ORA, mesuré sur le logo officiel */
-   --accent-strong: #9E5726;   /* boutons : texte blanc lisible */
-   --accent-hover: #8A4B20;
-   --accent-ink: #FFFFFF;
-   --accent-text: #9E5726;     /* petits textes en cuivre */
-   --field: #121212;           /* section inversée */
-   --field-ink: #F3F3F1;
-   --field-muted: #A8A8A4;
-   --field-surface: #1F1F1E;
-   --field-accent-text: #D9925C;
-   --wa-bubble: #D9FDD3;
-   --wa-ink: #111B21;
-   --wa-meta: #667781;
+   --ground: #0A0A0A;
+   --surface: #141414;            /* voile blanc cassé 4 % */
+   --surface-2: #1D1D1D;          /* voile blanc cassé 8 % */
+   --veil: rgba(250, 250, 250, 0.08);
+   --veil-hover: rgba(250, 250, 250, 0.13);
+   --ink: #FAFAFA;
+   --muted: #8A8A8A;
+   --accent: #B87333;             /* cuivre : logo, bouton principal, accents */
+   --accent-ink: #0A0A0A;         /* texte sur cuivre : toujours noir */
+   --accent-hover: color-mix(in srgb, #B87333 88%, #FAFAFA);
 
-   --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
-   --font-logo: "Jost", "Futura", "Century Gothic", sans-serif; /* uniquement pour le logo */
-   --step-small: 0.875rem;
-   --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+   --font: "Jost", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+   --step-small: 0.875rem;                                  /* 14 px minimum */
+   --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);     /* 16–18 px */
    --step-lead: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
-   --step-head: clamp(2rem, 1.25rem + 3vw, 3.75rem);
-   --step-display: clamp(2.75rem, 1rem + 5.4vw, 5.5rem);
+   --step-head: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);        /* H2 : 32–56 px */
+   --step-display: clamp(2.5rem, 1rem + 5.4vw, 5.5rem);     /* H1 : 40–88 px */
 
-   --margin: clamp(1rem, 2.2vw, 2rem);
+   --margin: clamp(1rem, 2.2vw, 2rem);                      /* 16–32 px */
    --gutter: clamp(0.75rem, 1.4vw, 1.5rem);
    --section: clamp(4.5rem, 8vw, 8.5rem);
    --header-h: 64px;
+   --radius: 24px;
+   --radius-small: 14px;
 
    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   }
-  .dark {
-   --ground: #0E0E0E;
-   --surface: #1B1B1A;
-   --ink: #F1F0EE;
-   --muted: #A3A29F;
-   --accent-strong: #CF7238;
-   --accent-hover: #DA8350;
-   --accent-ink: #140B05;
-   --accent-text: #E08A52;
-   --field: #F1F0EE;
-   --field-ink: #121212;
-   --field-muted: #595957;
-   --field-surface: #E2E1DE;
-   --field-accent-text: #9E5726;
-   --wa-bubble: #005C4B;
-   --wa-ink: #E9EDEF;
-   --wa-meta: #A5C9C1;
-  }
+  @media (max-width: 899px) { :root { --radius: 20px; } }
 
   /* ===================================================================
      BASE
      =================================================================== */
   *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); background: var(--ground); color-scheme: dark; }
   body {
    margin: 0;
    background: var(--ground);
    color: var(--ink);
    font-family: var(--font);
    font-size: var(--step-body);
+   font-weight: 400;
    line-height: 1.5;
    font-kerning: normal;
    -webkit-font-smoothing: antialiased;
@@ -134,7 +100,7 @@
   p { margin: 0; text-wrap: pretty; }
   h1, h2, h3 { margin: 0; text-wrap: balance; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  ::selection { background: var(--accent); color: #fff; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   .wrap { padding-inline: var(--margin); max-width: 1760px; margin-inline: auto; }
   .grid12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
@@ -143,19 +109,19 @@
   .js .js-only { display: inline-flex !important; }
 
   /* ===================================================================
-     BOUTONS
+     BOUTONS — un seul bouton principal (cuivre) par écran
      =================================================================== */
   .btn {
    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
    min-height: 48px; padding: 0 22px;
    border: 0; border-radius: 999px;
-   font-size: 1rem; font-weight: 650; line-height: 1; text-decoration: none; white-space: nowrap;
-   transition: transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease;
+   font-size: 1rem; font-weight: 500; letter-spacing: 0.02em; line-height: 1; text-decoration: none; white-space: nowrap;
+   transition: transform 160ms var(--ease-out), background-color 200ms ease;
    touch-action: manipulation;
   }
   .btn:active { transform: scale(0.97); }
-  .btn-primary { background: var(--accent-strong); color: var(--accent-ink); }
-  .btn-quiet { background: var(--surface); color: var(--ink); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-quiet { background: var(--veil); color: var(--ink); }
   .btn-small { min-height: 44px; padding: 0 16px; font-size: 0.9375rem; }
   .icon-btn {
    width: 44px; height: 44px; display: inline-grid; place-items: center;
@@ -166,34 +132,29 @@
   .icon-btn:active { transform: scale(0.95); }
   @media (hover: hover) and (pointer: fine) {
    .btn-primary:hover { background: var(--accent-hover); }
-   .btn-quiet:hover { background: color-mix(in srgb, var(--surface) 80%, var(--ink) 20%); }
-   .icon-btn:hover { background: var(--surface); }
+   .btn-quiet:hover, .icon-btn:hover { background: var(--veil-hover); }
   }
 
   /* ===================================================================
-     EN-TÊTE
+     EN-TÊTE — logo en haut à gauche, symbole de 28 à 32 px (§10 bis)
      =================================================================== */
   .site-header { position: sticky; top: 0; z-index: 50; background: var(--ground); }
   .nav { display: flex; align-items: center; height: var(--header-h); gap: 8px; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
-  .brand svg { color: var(--accent); flex-shrink: 0; }
-  .brand-name { font-family: var(--font-logo); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.16em; margin-right: -0.16em; line-height: 1; }
+  .brand { display: inline-flex; align-items: center; margin-right: auto; color: var(--accent); }
+  .brand svg { height: 30px; width: auto; aspect-ratio: 41.44 / 12; display: block; }
   .nav-links { display: flex; gap: 28px; margin-right: 20px; }
-  .nav-links a { text-decoration: none; font-size: 0.9375rem; font-weight: 550; color: var(--muted); transition: color 160ms ease; }
+  .nav-links a { text-decoration: none; font-size: 0.9375rem; font-weight: 500; color: var(--muted); transition: color 160ms ease; }
   @media (hover: hover) and (pointer: fine) { .nav-links a:hover { color: var(--ink); } }
-  .theme-sun { display: none; }
-  .dark .theme-sun { display: inline; }
-  .dark .theme-moon { display: none; }
   #cart-count {
    position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px;
-   border-radius: 999px; background: var(--accent-strong); color: var(--accent-ink);
-   font-size: 0.6875rem; font-weight: 800; display: grid; place-items: center;
+   border-radius: 999px; background: var(--accent); color: var(--accent-ink);
+   font-size: 0.6875rem; font-weight: 700; display: grid; place-items: center;
    opacity: 0; transform: scale(0.8);
    transition: opacity 160ms ease, transform 200ms var(--ease-out);
   }
   #cart-count.visible { opacity: 1; transform: scale(1); }
   #cart-count.bump { transform: scale(1.2); }
-  .menu-btn { display: none; min-height: 44px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--surface); font-weight: 650; font-size: 0.9375rem; }
+  .menu-btn { display: none; min-height: 44px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--veil); font-weight: 500; font-size: 0.9375rem; }
   .nav-order { margin-left: 8px; }
 
   .search-bar { padding-bottom: 12px; }
@@ -201,17 +162,19 @@
   .search-form { display: flex; gap: 8px; }
   .search-form input {
    flex: 1; min-width: 0; min-height: 48px; padding: 0 18px;
-   border: 0; border-radius: 999px; background: var(--surface); font-size: 1rem;
+   border: 0; border-radius: 999px; background: var(--surface-2); font-size: 1rem;
   }
+  .search-form input::placeholder { color: var(--muted); }
   .search-form input:focus { outline: 2px solid var(--accent); outline-offset: 0; }
 
   .mobile-menu { padding: 8px 0 24px; }
   .mobile-menu[hidden] { display: none; }
-  .mobile-menu a { display: block; padding: 12px 0; font-size: 1.75rem; font-weight: 700; font-stretch: 108%; letter-spacing: -0.02em; text-decoration: none; }
+  .mobile-menu a { display: block; padding: 12px 0; font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; }
 
   @media (max-width: 899px) {
    .nav-links, .nav-order { display: none; }
    .menu-btn { display: inline-flex; align-items: center; }
+   .brand svg { height: 28px; }
   }
 
   /* ===================================================================
@@ -228,14 +191,13 @@
   .hero-stage { grid-area: stage; }
   .display {
    font-size: var(--step-display);
-   line-height: 0.95;
-   letter-spacing: -0.04em;
-   font-weight: 760;
-   font-stretch: 106%;
-   margin-left: -0.04em;
+   line-height: 1.05;
+   letter-spacing: -0.02em;
+   font-weight: 700;
+   margin-left: -0.03em;
    max-width: 11ch;
   }
-  .lead { font-size: var(--step-lead); line-height: 1.35; max-width: 34ch; margin-top: 32px; }
+  .lead { font-size: var(--step-lead); line-height: 1.4; max-width: 34ch; margin-top: 32px; }
 
   .picker { border: 0; padding: 0; margin: 40px 0 0; min-width: 0; }
   .picker legend { font-size: var(--step-small); color: var(--muted); margin-bottom: 12px; padding: 0; }
@@ -244,27 +206,28 @@
   .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
   .chip span, .filter {
    display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
-   border: 0; border-radius: 999px; background: var(--surface); color: var(--ink);
-   font-size: 0.9375rem; font-weight: 550; white-space: nowrap;
+   border: 0; border-radius: 999px; background: var(--veil); color: var(--ink);
+   font-size: 0.9375rem; font-weight: 500; white-space: nowrap;
    transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
   }
   .chip input:checked + span, .filter[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
   .chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
   .chip:active span, .filter:active { transform: scale(0.97); }
 
+  /* La bulle reprend la forme d'un message, pas les couleurs de WhatsApp */
   .bubble {
    margin-top: 20px; max-width: 460px;
-   background: var(--wa-bubble); color: var(--wa-ink);
-   padding: 14px 16px 10px; border-radius: 16px 16px 4px 16px;
+   background: var(--surface-2); color: var(--ink);
+   padding: 14px 16px 10px; border-radius: 22px 22px 6px 22px;
    font-size: 1rem; line-height: 1.4;
   }
   .bubble p { transition: opacity 180ms ease, filter 180ms ease; }
   .bubble.is-swapping p { opacity: 0; filter: blur(3px); }
-  .bubble-meta { display: block; margin-top: 6px; text-align: right; font-size: 0.8125rem; color: var(--wa-meta); }
-  .bubble-meta i { color: #53BDEB; margin-left: 4px; }
+  .bubble-meta { display: block; margin-top: 6px; text-align: right; font-size: 0.875rem; color: var(--muted); }
+  .bubble-meta i { margin-left: 4px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
   .hero-note { margin-top: 20px; font-size: var(--step-small); color: var(--muted); }
-  .hero-note a { text-underline-offset: 0.18em; }
+  .hero-note a { color: var(--ink); text-underline-offset: 0.18em; }
 
   .stage {
    position: relative; margin: 0;
@@ -275,16 +238,17 @@
   }
   .stage img {
    position: absolute; inset: 64px 12% 84px; width: 76%; height: calc(100% - 148px); object-fit: contain;
-   transition: opacity 200ms ease, filter 200ms ease, transform 320ms var(--ease-out);
+   transition: opacity 200ms ease, filter 200ms ease, transform 280ms var(--ease-out);
   }
   .stage.is-swapping img { opacity: 0; filter: blur(4px); transform: scale(0.98); }
-  .stage-flag { position: absolute; top: 20px; left: 24px; font-size: 0.9375rem; font-weight: 650; color: var(--accent-text); }
+  .stage-flag { position: absolute; top: 20px; left: 24px; font-size: 0.9375rem; font-weight: 500; color: var(--accent); }
   .stage figcaption {
    position: absolute; left: 24px; right: 24px; bottom: 20px;
    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+   font-size: 1.125rem;
   }
-  .stage-name { font-size: 1.125rem; font-weight: 600; }
-  .stage-price { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem); font-weight: 760; font-stretch: 106%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .stage-name { font-weight: 500; }
+  .stage-price { font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; }
 
   @media (max-width: 899px) {
    .hero { grid-template-areas: "head" "stage" "order"; grid-template-columns: minmax(0, 1fr); padding-top: 12px; }
@@ -294,7 +258,7 @@
    .stage { height: 30svh; min-height: 220px; max-height: 300px; }
    .stage img { inset: 40px 15% 48px; width: 70%; height: calc(100% - 88px); }
    .stage-flag { top: 14px; left: 16px; }
-   .stage figcaption { left: 16px; right: 16px; bottom: 12px; }
+   .stage figcaption { left: 16px; right: 16px; bottom: 12px; font-size: 1rem; }
    .picker { margin-top: 24px; }
    .bubble { margin-top: 16px; }
    .hero-actions { margin-top: 16px; }
@@ -309,19 +273,17 @@
   .film video { width: 100%; aspect-ratio: 16 / 9; max-height: 82svh; object-fit: cover; background: #000; }
 
   /* ===================================================================
-     SECTIONS : titres
+     SECTIONS
      =================================================================== */
   .section { padding-block: var(--section); }
-  .section-surface { background: var(--surface); --surface: var(--ground); }
-  .section-title {
-   font-size: var(--step-head); line-height: 1; letter-spacing: -0.03em;
-   font-weight: 740; font-stretch: 106%; max-width: 16ch;
-  }
+  /* Section sur voile 4 % ; ses cartes passent au voile 8 % pour rester visibles */
+  .section-surface { background: #141414; --surface: var(--surface-2); }
+  .section-title { font-size: var(--step-head); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; max-width: 16ch; }
   .section-intro { margin-top: 20px; max-width: 48ch; }
   .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 
   /* ===================================================================
-     CATALOGUE
+     CATALOGUE — le prix n'est jamais plus grand que le nom
      =================================================================== */
   .filters { display: flex; flex-wrap: wrap; gap: 8px; }
   .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(2rem, 3.5vw, 3.5rem) var(--gutter); }
@@ -331,15 +293,15 @@
    display: grid; place-items: center; width: 100%; aspect-ratio: 1 / 1;
    padding: 0; border: 0; background: var(--surface); cursor: zoom-in; overflow: hidden;
   }
-  .product-media img { width: 78%; height: 78%; object-fit: contain; transition: transform 320ms var(--ease-out); }
+  .product-media img { width: 78%; height: 78%; object-fit: contain; transition: transform 280ms var(--ease-out); }
   @media (hover: hover) and (pointer: fine) { .product-media:hover img { transform: scale(1.04); } }
   .product-body { display: flex; flex-direction: column; flex: 1; padding-top: 16px; }
-  .product-flag { font-size: 0.875rem; font-weight: 650; color: var(--accent-text); margin-bottom: 4px; }
-  .product h3 { font-size: 1.125rem; font-weight: 650; letter-spacing: -0.01em; line-height: 1.25; }
+  .product-flag { font-size: 0.875rem; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
+  .product h3 { font-size: 1.125rem; font-weight: 500; line-height: 1.25; }
   .product-meta { margin-top: 4px; font-size: 0.9375rem; color: var(--muted); }
   .product-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; }
-  .price { font-size: 1.25rem; font-weight: 720; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .buy-link { font-weight: 650; font-size: 0.9375rem; text-underline-offset: 0.18em; }
+  .price { font-size: 1.125rem; font-weight: 400; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .buy-link { font-weight: 500; font-size: 0.9375rem; text-underline-offset: 0.18em; }
   .no-result { padding: 48px 0; }
   .no-result[hidden] { display: none; }
   .no-result p + p { margin-top: 8px; color: var(--muted); }
@@ -349,6 +311,7 @@
   @media (max-width: 759px) {
    .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px; }
    .product h3 { font-size: 1rem; }
+   .price { font-size: 1rem; }
    .product-meta { font-size: 0.875rem; }
    .product-foot { flex-direction: column; align-items: stretch; gap: 10px; }
    .product-foot .btn { width: 100%; }
@@ -358,13 +321,13 @@
      FAQ
      =================================================================== */
   .faq { margin-top: clamp(4.5rem, 8vw, 8rem); row-gap: 24px; }
-  .faq-title { grid-column: 1 / span 4; font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 720; font-stretch: 106%; }
+  .faq-title { grid-column: 1 / span 4; font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
   .faq-list { grid-column: 6 / -1; display: grid; gap: 8px; }
-  details { background: var(--surface); }
+  details { background: var(--surface); border-radius: var(--radius); overflow: hidden; }
   summary {
    list-style: none; cursor: pointer;
    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-   padding: 20px 22px; font-weight: 620; font-size: 1.0625rem;
+   padding: 20px 22px; font-weight: 500; font-size: 1.0625rem;
   }
   summary::-webkit-details-marker { display: none; }
   summary::after { content: "+"; font-size: 1.5rem; font-weight: 400; line-height: 1; transition: transform 200ms var(--ease-out); }
@@ -373,26 +336,22 @@
   @media (max-width: 899px) { .faq-title, .faq-list { grid-column: 1 / -1; } }
 
   /* ===================================================================
-     ÉNERGIE : section inversée
+     ÉNERGIE
      =================================================================== */
-  .invert {
-   --ground: var(--field); --ink: var(--field-ink); --muted: var(--field-muted);
-   --surface: var(--field-surface); --accent-text: var(--field-accent-text);
-   background: var(--ground); color: var(--ink);
-  }
   .energy { row-gap: 40px; }
   .energy-feature { grid-column: 1 / span 6; align-self: start; }
   .energy-feature .product-media { aspect-ratio: 4 / 3; }
-  .energy-feature h3 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem); font-weight: 720; letter-spacing: -0.02em; }
-  .energy-feature .price { font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem); }
+  .energy-feature h3 { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem); font-weight: 700; letter-spacing: -0.02em; }
+  .energy-feature .price { font-size: clamp(1.25rem, 1rem + 0.8vw, 1.625rem); }
   .energy-list { grid-column: 7 / -1; display: grid; gap: 8px; align-content: start; }
-  .row-product { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: 16px; background: var(--surface); padding: 10px 16px 10px 10px; }
-  .row-product .product-media { aspect-ratio: 1 / 1; background: var(--ground); }
+  .row-product { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: 16px; background: var(--surface); padding: 10px 16px 10px 10px; border-radius: var(--radius); overflow: hidden; }
+  .row-product .product-media { aspect-ratio: 1 / 1; background: var(--ground); border-radius: var(--radius-small); }
   .row-product .product-body { padding-top: 0; }
   .row-product h3 { font-size: 1.0625rem; }
+  .row-product .price { font-size: 1rem; }
   .row-product .product-foot { margin-top: 0; padding-top: 0; flex-direction: column; align-items: flex-end; gap: 8px; }
   .energy-faq { display: grid; gap: 8px; }
-  .energy-faq h3 { font-size: 1.25rem; font-weight: 680; margin: 24px 0 8px; }
+  .energy-faq h3 { font-size: 1.25rem; font-weight: 700; margin: 24px 0 8px; }
   @media (max-width: 899px) {
    .energy-feature, .energy-list { grid-column: 1 / -1; }
    .row-product { grid-template-columns: 80px minmax(0, 1fr); }
@@ -403,28 +362,25 @@
      RÉPARATION & DÉCODAGE
      =================================================================== */
   .services { row-gap: var(--gutter); }
-  .service { grid-column: span 6; background: var(--surface); padding: clamp(1.75rem, 3vw, 3rem); display: flex; flex-direction: column; }
-  .service h3 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem); font-weight: 740; font-stretch: 106%; letter-spacing: -0.03em; line-height: 1; }
+  .service { grid-column: span 6; background: var(--surface); padding: clamp(1.75rem, 3vw, 3rem); display: flex; flex-direction: column; border-radius: var(--radius); }
+  .service h3 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
   .service > p { margin-top: 16px; max-width: 46ch; }
   .service ul { margin: 24px 0 32px; padding-left: 1.1em; display: grid; gap: 10px; }
-  .service li::marker { color: var(--accent-text); }
+  .service li::marker { color: var(--accent); }
   .service .btn { margin-top: auto; align-self: flex-start; }
-  .service-tag { font-size: 0.9375rem; font-weight: 650; color: var(--accent-text); margin-bottom: 12px; }
+  .service-tag { font-size: 0.9375rem; font-weight: 500; color: var(--accent); margin-bottom: 12px; }
   @media (max-width: 899px) { .service { grid-column: 1 / -1; } }
 
   /* ===================================================================
-     COMMANDER
+     COMMANDER — logos de tiers en monochrome (§5)
      =================================================================== */
   .steps-title { grid-column: 1 / span 5; }
   .steps { grid-column: 6 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px var(--gutter); }
-  .steps h3 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.015em; line-height: 1.15; }
+  .steps h3 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
   .steps p { margin-top: 10px; max-width: 36ch; }
   .pay { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-  .pay span { display: inline-flex; align-items: center; height: 30px; padding: 0 10px; font-size: 0.8125rem; font-weight: 800; }
-  .pay .moncash { background: #E3000F; color: #fff; font-style: italic; }
-  .pay .natcash { background: #FF8A00; color: #0B2E59; text-transform: lowercase; }
-  .pay .visa { background: #fff; color: #1434CB; font-size: 1.25rem; }
-  .pay .soge { background: #fff; color: #004F9F; letter-spacing: 0.04em; }
+  .pay span { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 8px; background: var(--veil); font-size: 0.875rem; font-weight: 500; }
+  .pay i { font-size: 1.125rem; }
   @media (max-width: 899px) {
    .steps-title, .steps { grid-column: 1 / -1; }
    .steps { margin-top: 40px; }
@@ -432,16 +388,13 @@
   @media (max-width: 559px) { .steps { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
 
   /* ===================================================================
-     AVIS
+     AVIS — relus, prénom + initiale, sans étoiles (§10 bis, §12)
      =================================================================== */
   .reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); min-height: 200px; }
-  .review { margin: 0; background: var(--surface); padding: clamp(1.5rem, 2.5vw, 2.25rem); display: flex; flex-direction: column; gap: 20px; }
-  .review-stars { color: var(--accent-text); letter-spacing: 2px; font-size: 1rem; }
+  .review { margin: 0; background: var(--surface); padding: clamp(1.5rem, 2.5vw, 2.25rem); display: flex; flex-direction: column; gap: 20px; border-radius: var(--radius); }
   .review blockquote { margin: 0; font-size: 1.125rem; line-height: 1.45; }
-  .review figcaption { margin-top: auto; font-size: 0.9375rem; }
-  .review figcaption strong { display: block; font-weight: 650; }
-  .review figcaption span { color: var(--muted); }
-  .review-skeleton { background: var(--surface); height: 220px; }
+  .review figcaption { margin-top: auto; font-size: 0.9375rem; color: var(--muted); }
+  .review-skeleton { background: var(--surface); height: 200px; border-radius: var(--radius); }
   .reviews-state { grid-column: 1 / -1; padding: 24px 0; }
   .reviews-state[hidden] { display: none; }
   .reviews-state .btn { margin-top: 16px; }
@@ -449,82 +402,77 @@
   @media (max-width: 639px) { .reviews { grid-template-columns: minmax(0, 1fr); } .review-skeleton:nth-child(2) { display: none; } }
 
   /* ===================================================================
-     FIN : contact sur fond cuivre
+     FIN : contact et logo complet (jamais d'aplat cuivre)
      =================================================================== */
-  /* Fond au cuivre exact du logo, texte noir comme le fond du logo */
-  .end { --accent-ink: #140B05; --accent-strong: #CF7238; background: var(--accent); color: #140B05; padding-block: var(--section) 32px; }
-  .end :focus-visible { outline-color: #140B05; }
-  .end-title { font-size: var(--step-display); line-height: 0.95; letter-spacing: -0.04em; font-weight: 760; font-stretch: 106%; max-width: 12ch; margin-left: -0.04em; }
+  .end { background: var(--ground); padding-block: var(--section) 32px; }
+  .end-title { font-size: var(--step-display); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; margin-left: -0.03em; }
   .end-grid { margin-top: clamp(2.5rem, 5vw, 4.5rem); row-gap: 40px; }
   .end-phones { grid-column: 1 / span 7; display: grid; gap: 20px; }
   .end-phones a { display: block; text-decoration: none; }
-  .end-phones small { display: block; font-size: 0.9375rem; opacity: 0.8; }
-  .end-phones strong { display: block; font-size: var(--step-head); font-weight: 720; font-stretch: 104%; letter-spacing: -0.03em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .end-phones small { display: block; font-size: 0.9375rem; color: var(--muted); }
+  .end-phones strong { display: block; font-size: var(--step-head); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; font-variant-numeric: tabular-nums; }
   .end-info { grid-column: 9 / -1; display: grid; gap: 20px; align-content: start; }
   .end-info p { font-size: 1.0625rem; }
-  .btn-invert { background: var(--accent-ink); color: var(--accent-strong); align-self: start; justify-self: start; }
+  .end-info .btn { justify-self: start; }
   .socials { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-  .socials a { font-weight: 650; text-underline-offset: 0.18em; }
-  .end-foot { margin-top: clamp(4rem, 8vw, 7rem); display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 24px; flex-wrap: wrap; }
-  .lockup { display: flex; align-items: center; gap: clamp(16px, 2vw, 28px); }
-  .lockup-ring { width: clamp(64px, 7vw, 104px); height: auto; aspect-ratio: 1; flex-shrink: 0; }
-  .lockup-text { display: grid; gap: 10px; font-family: var(--font-logo); font-weight: 400; }
-  .lockup-name { font-size: clamp(2.5rem, 1.6rem + 3vw, 4.5rem); letter-spacing: 0.16em; line-height: 0.8; }
-  .lockup-slogan { font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.125rem); letter-spacing: 0.14em; }
-  .end-legal { font-size: 0.875rem; opacity: 0.85; }
+  .socials a { font-weight: 500; text-underline-offset: 0.18em; }
+  /* Zone de sécurité du logo : au moins la hauteur du symbole tout autour */
+  .end-foot { margin-top: clamp(5rem, 10vw, 9rem); padding-block: clamp(48px, 6vw, 80px) 0; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+  .end-logo { display: grid; gap: 20px; }
+  .end-logo svg { width: clamp(180px, 20vw, 280px); height: auto; aspect-ratio: 41.44 / 12; color: var(--accent); display: block; }
+  .signature { font-size: 1.125rem; color: var(--ink); }
+  .end-legal { font-size: 0.875rem; color: var(--muted); }
   @media (max-width: 899px) { .end-phones, .end-info { grid-column: 1 / -1; } }
 
   /* ===================================================================
-     BOUTON WHATSAPP FLOTTANT
+     BOUTON WHATSAPP FLOTTANT (monochrome)
      =================================================================== */
   .wa-fab {
    position: fixed; right: 16px; bottom: 16px; z-index: 40;
    width: 56px; height: 56px; border-radius: 999px;
    display: grid; place-items: center;
-   background: #25D366; color: #fff; font-size: 1.75rem; text-decoration: none;
-   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+   background: var(--surface-2); color: var(--ink); font-size: 1.625rem; text-decoration: none;
+   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
    transition: transform 200ms var(--ease-out), opacity 200ms ease;
   }
   .wa-fab:active { transform: scale(0.94); }
-  /* Caché tant que le hero (qui a déjà son bouton WhatsApp) est visible */
   .js .wa-fab:not(.show) { opacity: 0; transform: translateY(8px); pointer-events: none; }
   @media (min-width: 900px) { .wa-fab { display: none; } }
 
   /* ===================================================================
      PANIER (tiroir)
      =================================================================== */
-  #cart-drawer { position: fixed; inset: 0; z-index: 100; pointer-events: none; visibility: hidden; transition: visibility 0s linear 320ms; }
-  #cart-drawer.open { visibility: visible; transition-delay: 0s; }
-  #cart-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); opacity: 0; transition: opacity 200ms ease; }
+  #cart-drawer { position: fixed; inset: 0; z-index: 100; pointer-events: none; visibility: hidden; transition: visibility 0s linear 280ms; }
+  #cart-drawer.open { visibility: visible; transition-delay: 0s; pointer-events: auto; }
+  #cart-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); opacity: 0; transition: opacity 200ms ease; }
   #cart-panel {
    position: absolute; top: 0; right: 0; bottom: 0; width: min(420px, 100vw);
-   background: var(--ground); color: var(--ink);
+   background: var(--surface); color: var(--ink);
    display: flex; flex-direction: column;
    transform: translateX(100%);
-   transition: transform 320ms var(--ease-drawer);
-   box-shadow: -12px 0 40px rgba(0, 0, 0, 0.2);
+   transition: transform 280ms var(--ease-drawer);
+   box-shadow: -12px 0 40px rgba(0, 0, 0, 0.5);
   }
-  #cart-drawer.open { pointer-events: auto; }
   #cart-drawer.open #cart-backdrop { opacity: 1; }
   #cart-drawer.open #cart-panel { transform: translateX(0); }
   .cart-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 16px 16px 24px; }
-  .cart-head h2 { font-size: 1.5rem; font-weight: 740; letter-spacing: -0.02em; }
+  .cart-head h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
   .cart-head p { font-size: 0.9375rem; color: var(--muted); }
   #cart-items { flex: 1; overflow-y: auto; padding: 0 24px; display: grid; gap: 8px; align-content: start; overscroll-behavior: contain; }
-  .cart-item { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--surface); padding: 8px 8px 8px 8px; }
-  .cart-item img { width: 64px; height: 64px; object-fit: contain; background: var(--ground); padding: 6px; }
-  .cart-item-name { font-weight: 650; font-size: 0.9375rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cart-item { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--surface-2); padding: 8px; border-radius: var(--radius-small); }
+  .cart-item img { width: 64px; height: 64px; object-fit: contain; background: var(--ground); padding: 6px; border-radius: 10px; }
+  .cart-item-name { font-weight: 500; font-size: 0.9375rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cart-item-price { font-size: 0.9375rem; font-variant-numeric: tabular-nums; color: var(--muted); }
   .qty { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
-  .qty button { width: 32px; height: 32px; border: 0; border-radius: 999px; background: var(--ground); font-weight: 700; }
-  .qty span { min-width: 24px; text-align: center; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .qty button { width: 32px; height: 32px; border: 0; border-radius: 999px; background: var(--veil); font-weight: 700; }
+  .qty span { min-width: 24px; text-align: center; font-weight: 500; font-variant-numeric: tabular-nums; }
   .cart-remove { width: 40px; height: 40px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); }
-  @media (hover: hover) and (pointer: fine) { .cart-remove:hover { color: var(--ink); background: var(--ground); } }
+  @media (hover: hover) and (pointer: fine) { .cart-remove:hover { color: var(--ink); background: var(--veil); } }
   #cart-empty { flex: 1; display: grid; place-content: center; text-align: center; padding: 24px; color: var(--muted); }
   #cart-empty[hidden], #cart-items[hidden], #cart-footer[hidden] { display: none; }
   #cart-footer { padding: 20px 24px 24px; display: grid; gap: 14px; }
   .cart-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-  .cart-total strong { font-size: 1.5rem; font-weight: 760; text-align: right; font-variant-numeric: tabular-nums; }
+  .cart-total strong { font-size: 1.375rem; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
   .cart-pay { font-size: 0.875rem; color: var(--muted); }
   .cart-clear { justify-self: center; border: 0; background: none; color: var(--muted); font-size: 0.9375rem; text-decoration: underline; text-underline-offset: 0.18em; min-height: 44px; }
 
@@ -534,72 +482,63 @@
   .overlay {
    position: fixed; inset: 0; z-index: 110;
    display: none; align-items: center; justify-content: center; padding: 16px;
-   background: rgba(0, 0, 0, 0.6);
+   background: rgba(0, 0, 0, 0.7);
   }
   .overlay.open { display: flex; animation: fadeIn 200ms ease; }
-  .overlay.open > * { animation: popIn 240ms var(--ease-out); }
+  .overlay.open > * { animation: popIn 200ms var(--ease-out); }
   @keyframes fadeIn { from { opacity: 0; } }
   @keyframes popIn { from { opacity: 0; transform: scale(0.96); } }
-  .dialog { width: 100%; max-width: 460px; max-height: 90svh; overflow-y: auto; background: var(--ground); color: var(--ink); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3); }
+  .dialog { width: 100%; max-width: 460px; max-height: 90svh; overflow-y: auto; background: var(--surface); color: var(--ink); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); border-radius: var(--radius); }
   .dialog-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 16px 8px 24px; }
-  .dialog-head h2 { font-size: 1.5rem; font-weight: 740; letter-spacing: -0.02em; }
+  .dialog-head h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
   .form { padding: 8px 24px 24px; display: grid; gap: 18px; }
-  .field label, .field legend { display: block; font-weight: 620; margin-bottom: 8px; padding: 0; }
+  .field label, .field legend { display: block; font-weight: 500; margin-bottom: 8px; padding: 0; }
   .field input, .field textarea {
-   width: 100%; border: 0; background: var(--surface); padding: 12px 14px; font-size: 1rem; border-radius: 0;
+   width: 100%; border: 0; background: var(--surface-2); padding: 12px 14px; font-size: 1rem; border-radius: var(--radius-small);
   }
+  .field input::placeholder, .field textarea::placeholder { color: var(--muted); }
   .field textarea { resize: vertical; min-height: 110px; }
   .field input:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; }
   .field fieldset { border: 0; padding: 0; margin: 0; }
-  .stars { display: flex; gap: 4px; }
-  .star-btn { width: 44px; height: 44px; border: 0; background: var(--surface); font-size: 1.25rem; color: var(--muted); transition: color 120ms ease, transform 160ms var(--ease-out); }
-  .star-btn.on { color: var(--accent-text); }
-  .star-btn:active { transform: scale(0.94); }
+  .notes { display: flex; gap: 6px; }
+  .note-btn { width: 44px; height: 44px; border: 0; border-radius: var(--radius-small); background: var(--veil); font-weight: 500; font-variant-numeric: tabular-nums; transition: background-color 120ms ease, color 120ms ease, transform 160ms var(--ease-out); }
+  .note-btn[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+  .note-btn:active { transform: scale(0.94); }
   .field-hint { font-size: 0.875rem; color: var(--muted); margin-top: 6px; text-align: right; }
-  .form-error { color: #C0362C; font-size: 0.9375rem; font-weight: 600; }
-  .dark .form-error { color: #FF8A80; }
+  .form-note { font-size: 0.875rem; color: var(--muted); }
+  .form-error { font-size: 0.9375rem; font-weight: 500; }
   .form-error[hidden] { display: none; }
   .form .btn { width: 100%; }
   .form .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-  #lightbox { background: rgba(0, 0, 0, 0.88); }
-  #lightbox img { max-width: 92vw; max-height: 86svh; object-fit: contain; }
-  #lightbox .icon-btn { position: absolute; top: 16px; right: 16px; color: #fff; background: rgba(255, 255, 255, 0.12); }
+  #lightbox { background: rgba(0, 0, 0, 0.9); }
+  #lightbox img { max-width: 92vw; max-height: 86svh; object-fit: contain; border-radius: var(--radius); }
+  #lightbox .icon-btn { position: absolute; top: 16px; right: 16px; background: var(--veil); }
 
   .toast {
    position: fixed; left: 50%; bottom: 88px; z-index: 120;
    transform: translate(-50%, 8px); opacity: 0;
    background: var(--ink); color: var(--ground);
-   padding: 14px 22px; border-radius: 999px; font-weight: 600; font-size: 0.9375rem;
+   padding: 14px 22px; border-radius: 999px; font-weight: 500; font-size: 0.9375rem;
    max-width: calc(100vw - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
    transition: opacity 220ms var(--ease-out), transform 260ms var(--ease-out);
   }
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-  /* ===================================================================
-     COINS ARRONDIS (un seul rayon, grand, partout)
-     =================================================================== */
-  :root { --radius: 24px; --radius-small: 14px; }
-  .stage, .product-media, .film video, details, .service, .review, .review-skeleton,
-  .row-product, .dialog, #lightbox img { border-radius: var(--radius); }
-  details, .row-product, .dialog { overflow: hidden; }
-  .row-product .product-media, .cart-item, .field input, .field textarea, .star-btn { border-radius: var(--radius-small); }
-  .cart-item img { border-radius: 10px; }
-  .pay span { border-radius: 8px; }
-  .bubble { border-radius: 22px 22px 6px 22px; }
-  @media (max-width: 899px) { :root { --radius: 20px; } }
+  /* Coins arrondis restants */
+  .stage, .product-media, .film video { border-radius: var(--radius); }
 
   /* ===================================================================
-     ENTRÉES (une fois, au défilement)
+     ENTRÉES — une fois, 300 ms au plus (§10 bis)
      =================================================================== */
-  .js .rise { opacity: 0; transform: translateY(20px); }
+  .js .rise { opacity: 0; transform: translateY(16px); }
   .js .rise.in {
    opacity: 1; transform: none;
-   transition: opacity 480ms var(--ease-out), transform 600ms var(--ease-out);
+   transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
    transition-delay: var(--d, 0ms);
   }
-  .js .hero .rise { animation: heroIn 600ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
-  @keyframes heroIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .js .hero .rise { animation: heroIn 300ms var(--ease-out) both; animation-delay: var(--d, 0ms); }
+  @keyframes heroIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
   @media (prefers-reduced-motion: reduce) {
    html { scroll-behavior: auto; }
@@ -613,10 +552,10 @@
 
 <body>
 
-<!-- Logo ORA : l'anneau ouvert, redessiné d'après le logo officiel -->
+<!-- Logo ORA (charte v3.1) : tracé issu de logo/ora-logo.js, ne pas modifier à la main -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
- <symbol id="ora-ring" viewBox="0 0 100 100">
-  <path fill="currentColor" d="M85.98 18.23A48 48 0 1 1 80.82 13.2L75.36 18.81A40.2 40.2 0 1 0 80.52 23.83Z" />
+ <symbol id="ora-logo" viewBox="0 0 41.44 12">
+  <path fill="currentColor" fill-rule="evenodd" d="M10.5814 2.1257A6 6 0 1 1 9.8743 1.4186L9.1643 2.1286A5 5 0 1 0 9.8714 2.8357ZM24.24 6A4.12 4.12 0 1 0 16 6A4.12 4.12 0 1 0 24.24 6ZM23.24 6A3.12 3.12 0 1 0 17 6A3.12 3.12 0 1 0 23.24 6ZM26.84 10L26.84 2L29.59 2A2.25 2.25 0 0 1 29.59 6.5L32.84 10L31.4754 10L28.2254 6.5L27.84 6.5L27.84 10ZM27.84 3L29.59 3A1.25 1.25 0 0 1 29.59 5.5L27.84 5.5ZM34.24 10L37.84 1.75L41.44 10L40.3489 10L39.5635 8.2L36.1165 8.2L35.3311 10ZM36.5529 7.2L37.84 4.2503L39.1271 7.2Z" />
  </symbol>
 </svg>
 
@@ -625,8 +564,7 @@
  <div class="wrap">
   <div class="nav">
    <a href="#hero" class="brand" aria-label="ORA, accueil">
-    <svg class="ora-ring" width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><use href="#ora-ring" /></svg>
-    <span class="brand-name">ORA</span>
+    <svg viewBox="0 0 41.44 12" aria-hidden="true" focusable="false"><use href="#ora-logo" /></svg>
    </a>
 
    <nav class="nav-links" aria-label="Navigation principale">
@@ -640,15 +578,11 @@
    <button id="searchToggle" class="icon-btn" type="button" aria-label="Rechercher" aria-expanded="false" aria-controls="searchBar">
     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
    </button>
-   <button id="themeToggle" class="icon-btn" type="button" aria-label="Changer de thème">
-    <i class="fa-solid fa-sun theme-sun" aria-hidden="true"></i>
-    <i class="fa-solid fa-moon theme-moon" aria-hidden="true"></i>
-   </button>
    <button id="cartToggle" class="icon-btn js-only" type="button" aria-label="Ouvrir le panier" aria-controls="cart-drawer">
     <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
     <span id="cart-count" aria-hidden="true"></span>
    </button>
-   <a class="btn btn-primary btn-small nav-order" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ta%20renmen%20pase%20yon%20k%C3%B2mand." target="_blank" rel="noopener">
+   <a class="btn btn-quiet btn-small nav-order" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ta%20renmen%20pase%20yon%20k%C3%B2mand." target="_blank" rel="noopener">
     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Commander
    </a>
    <button id="menuToggle" class="menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
@@ -658,7 +592,7 @@
    <form class="search-form" role="search" id="searchForm">
     <label for="searchInput" class="sr-only">Rechercher un produit</label>
     <input id="searchInput" type="search" placeholder="Rechercher : iPhone, Samsung, chargeur…" autocomplete="off" />
-    <button class="btn btn-primary" type="submit">Chercher</button>
+    <button class="btn btn-quiet" type="submit">Chercher</button>
    </form>
   </div>
 
@@ -694,7 +628,7 @@
 
  <div class="hero-order rise" style="--d:160ms">
   <fieldset class="picker" id="picker">
-   <legend>Choisis un modèle, on prépare ton message :</legend>
+   <legend>Choisissez un modèle :</legend>
    <div class="chips">
    <label class="chip"><input type="radio" name="model" value="iphone16pm" checked
     data-name="iPhone 16 Pro Max" data-detail="1 To, Titane Désert" data-price="980" data-currency="USD" data-flag="Nouveau"
@@ -706,7 +640,7 @@
     data-name="Google Pixel 8 Pro" data-detail="128 Go, Obsidian" data-price="530" data-currency="USD" data-flag="Nouveau"
     data-img="https://i.ibb.co/mF6TTk71/1000494570-removebg-preview.png" /><span>Pixel 8 Pro</span></label>
    <label class="chip"><input type="radio" name="model" value="s22ultra"
-    data-name="Samsung Galaxy S22 Ultra" data-detail="128 Go, Burgundy, S Pen inclus" data-price="440" data-currency="USD" data-flag="Promo"
+    data-name="Samsung Galaxy S22 Ultra" data-detail="128 Go, Burgundy, S Pen inclus" data-price="440" data-currency="USD" data-flag=""
     data-img="https://i.ibb.co/tTmhf3WT/s22ultra.png" /><span>Galaxy S22 Ultra</span></label>
    <label class="chip"><input type="radio" name="model" value="a56"
     data-name="Samsung Galaxy A56" data-detail="128 Go, Bleu Azur" data-price="355" data-currency="USD" data-flag="Nouveau"
@@ -716,7 +650,7 @@
 
   <div class="bubble" id="bubble" aria-live="polite">
    <p id="bubbleText">Bonjou ORA ! Mwen enterese ak iPhone 16 Pro Max (1 To, Titane Désert) a $980. Li disponib ?</p>
-   <span class="bubble-meta">ton message WhatsApp <i class="fa-solid fa-check-double" aria-hidden="true"></i></span>
+   <span class="bubble-meta">votre message WhatsApp <i class="fa-solid fa-check-double" aria-hidden="true"></i></span>
   </div>
 
   <div class="hero-actions">
@@ -726,7 +660,7 @@
    </a>
    <button id="heroAdd" class="btn btn-quiet js-only" type="button">Ajouter au panier</button>
   </div>
-  <p class="hero-note">Lun–Sam, 9 h–18 h. Paiement MonCash, NatCash, Visa ou virement Sogebank. <a href="#catalogue">Voir tous les téléphones</a></p>
+  <p class="hero-note">Du lundi au samedi, de 9 h à 18 h. <a href="#catalogue">Voir tous les téléphones</a></p>
  </div>
 </section>
 
@@ -742,7 +676,7 @@
   <div class="section-head">
    <div>
     <h2 id="catalogue-title" class="section-title rise">Tous nos téléphones</h2>
-    <p class="section-intro rise" style="--d:70ms">Chaque appareil est vérifié avant la vente : batterie, écran, réseau. Les prix sont en dollars US ou en gourdes selon l'arrivage.</p>
+    <p class="section-intro rise" style="--d:70ms">La batterie et les fonctions de chaque appareil sont testées avant la vente. Prix en dollars US ou en gourdes.</p>
    </div>
    <div class="filters rise" style="--d:140ms" role="group" aria-label="Filtrer par marque">
     <button class="filter" type="button" data-filter="all" aria-pressed="true">Tout</button>
@@ -754,7 +688,7 @@
 
   <div id="no-result" class="no-result" hidden>
    <p><strong>Ce produit n'est pas dans le catalogue pour le moment.</strong></p>
-   <p>Demande-nous sur WhatsApp : on peut souvent le faire venir.</p>
+   <p>Disponibilité sur demande, par WhatsApp.</p>
    <a class="btn btn-primary" href="https://wa.me/50946302424" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander sur WhatsApp</a>
   </div>
 
@@ -793,7 +727,6 @@
    <article class="product rise" data-brand="samsung" data-name="Samsung Galaxy S22 Ultra" data-price="440" data-currency="USD" data-img="https://i.ibb.co/tTmhf3WT/s22ultra.png">
     <button class="product-media" type="button" aria-label="Agrandir la photo : Samsung Galaxy S22 Ultra"><img src="https://i.ibb.co/tTmhf3WT/s22ultra.png" alt="Samsung Galaxy S22 Ultra, Burgundy" loading="lazy" decoding="async" width="400" height="400" /></button>
     <div class="product-body">
-     <p class="product-flag">Promo</p>
      <h3>Samsung Galaxy S22 Ultra</h3>
      <p class="product-meta">128 Go · Burgundy · S Pen inclus · 5G</p>
      <div class="product-foot"><p class="price">$440</p><a class="buy-link" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ent%C3%A8rese%20ak%20Samsung%20Galaxy%20S22%20Ultra." target="_blank" rel="noopener">Commander</a></div>
@@ -829,8 +762,8 @@
     </div>
    </article>
 
-   <article class="product rise" data-brand="iphone" data-name="iPhone 12 Pro Max" data-price="450" data-currency="USD" data-img="https://i.ibb.co/r2Yz8Pj9/file-00000000764c71fdab125153934a89d0.png">
-    <button class="product-media" type="button" aria-label="Agrandir la photo : iPhone 12 Pro Max"><img src="https://i.ibb.co/r2Yz8Pj9/file-00000000764c71fdab125153934a89d0.png" alt="iPhone 12 Pro Max" loading="lazy" decoding="async" width="400" height="400" /></button>
+   <article class="product rise" data-brand="iphone" data-name="iPhone 12 Pro Max" data-price="450" data-currency="USD" data-img="images/iphone-12-pro-max.png">
+    <button class="product-media" type="button" aria-label="Agrandir la photo : iPhone 12 Pro Max"><img src="images/iphone-12-pro-max.png" alt="iPhone 12 Pro Max, en argent, graphite, or et bleu Pacifique" loading="lazy" decoding="async" width="1306" height="1306" /></button>
     <div class="product-body">
      <h3>iPhone 12 Pro Max</h3>
      <p class="product-meta">128 Go · 5G · débloqué</p>
@@ -838,17 +771,8 @@
     </div>
    </article>
 
-   <article class="product rise" data-brand="iphone" data-name="iPhone 12 Rouge" data-price="30000" data-currency="HTG" data-img="https://i.ibb.co/BK3ZpQ3p/file-00000000c778722fac884d06c3f95d13.png">
-    <button class="product-media" type="button" aria-label="Agrandir la photo : iPhone 12 Rouge"><img src="https://i.ibb.co/BK3ZpQ3p/file-00000000c778722fac884d06c3f95d13.png" alt="iPhone 12 rouge" loading="lazy" decoding="async" width="400" height="400" /></button>
-    <div class="product-body">
-     <h3>iPhone 12 Rouge</h3>
-     <p class="product-meta">64 Go · batterie à 74 %</p>
-     <div class="product-foot"><p class="price">30 000 HTG</p><a class="buy-link" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ent%C3%A8rese%20ak%20iPhone%2012%20Rouge." target="_blank" rel="noopener">Commander</a></div>
-    </div>
-   </article>
-
-   <article class="product rise" data-brand="samsung" data-name="Samsung Galaxy A36 5G" data-price="37500" data-currency="HTG" data-img="https://i.ibb.co/3YWK44Mn/file-00000000162871fdbbdeeb344c2e3943.png">
-    <button class="product-media" type="button" aria-label="Agrandir la photo : Samsung Galaxy A36 5G"><img src="https://i.ibb.co/3YWK44Mn/file-00000000162871fdbbdeeb344c2e3943.png" alt="Samsung Galaxy A36 5G" loading="lazy" decoding="async" width="400" height="400" /></button>
+   <article class="product rise" data-brand="samsung" data-name="Samsung Galaxy A36 5G" data-price="37500" data-currency="HTG" data-img="images/samsung-galaxy-a36.png">
+    <button class="product-media" type="button" aria-label="Agrandir la photo : Samsung Galaxy A36 5G"><img src="images/samsung-galaxy-a36.png" alt="Samsung Galaxy A36 5G, en noir et en lavande" loading="lazy" decoding="async" width="624" height="624" /></button>
     <div class="product-body">
      <h3>Samsung Galaxy A36 5G</h3>
      <p class="product-meta">128 Go · écran AMOLED · IP67</p>
@@ -899,7 +823,7 @@
     </details>
     <details class="rise" style="--d:120ms">
      <summary>Comment se passe la livraison ?</summary>
-     <p>Livraison gratuite sous 24 h à Port-au-Prince et Pétion-Ville. Pour les autres villes d'Haïti, on expédie avec des transporteurs partenaires, avec suivi. Tu paies par MonCash, NatCash, carte Visa ou virement Sogebank, à la commande ou à la réception.</p>
+     <p>Livraison gratuite sous 24 h à Port-au-Prince et Pétion-Ville. Pour les autres villes d'Haïti, nous expédions par des transporteurs partenaires, avec suivi. Paiement par MonCash, NatCash, carte Visa ou virement Sogebank, à la commande ou à la réception.</p>
     </details>
    </div>
   </div>
@@ -907,7 +831,7 @@
 </section>
 
 <!-- ================ ÉNERGIE & ACCESSOIRES ================ -->
-<section id="energie" class="section invert" aria-labelledby="energie-title">
+<section id="energie" class="section section-surface" aria-labelledby="energie-title">
  <div class="wrap">
   <div class="section-head">
    <div>
@@ -982,16 +906,16 @@
    <article class="service rise">
     <p class="service-tag">Sur devis</p>
     <h3>Décodage</h3>
-    <p>Ton iPhone ou ton Android est bloqué sur un opérateur étranger ? On le débloque rapidement et sans perte de données.</p>
+    <p>iPhone ou Android bloqué sur un opérateur étranger : nous le débloquons rapidement, sans perte de données.</p>
     <ul>
      <li>Décodage iPhone, toutes versions</li>
      <li>Décodage Samsung, Xiaomi, REVVL…</li>
-     <li>Suppression de compte iCloud ou FRP</li>
+     <li>Suppression de compte iCloud ou FRP, sur preuve de propriété</li>
     </ul>
-    <a class="btn btn-primary" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20bezwen%20yon%20s%C3%A8vis%20dekodaj." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander un devis</a>
+    <a class="btn btn-quiet" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20bezwen%20yon%20s%C3%A8vis%20dekodaj." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander un devis</a>
    </article>
    <article class="service rise" style="--d:80ms">
-    <p class="service-tag">Rapide</p>
+    <p class="service-tag">Sur devis</p>
     <h3>Réparation</h3>
     <p>Écran, batterie, port de charge, haut-parleur : diagnostic précis et pièces de bonne qualité.</p>
     <ul>
@@ -999,7 +923,7 @@
      <li>Changement de batterie certifiée</li>
      <li>Diagnostic rapide</li>
     </ul>
-    <a class="btn btn-primary" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20bezwen%20yon%20s%C3%A8vis%20reparasyon." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander un devis</a>
+    <a class="btn btn-quiet" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20bezwen%20yon%20s%C3%A8vis%20reparasyon." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander un devis</a>
    </article>
   </div>
  </div>
@@ -1010,29 +934,29 @@
  <div class="wrap grid12">
   <div class="steps-title">
    <h2 id="commander-title" class="section-title rise">Comment commander</h2>
-   <p class="section-intro rise" style="--d:70ms">Tout se passe sur WhatsApp, avec une vraie personne au bout.</p>
+   <p class="section-intro rise" style="--d:70ms">La commande se fait sur WhatsApp.</p>
   </div>
   <ol class="steps">
    <li class="rise">
-    <h3>Choisis ton téléphone</h3>
-    <p>Ajoute-le au panier ou envoie-nous directement le modèle qui t'intéresse.</p>
+    <h3>Choisissez votre téléphone</h3>
+    <p>Ajoutez-le au panier, ou envoyez-nous directement le modèle choisi.</p>
    </li>
    <li class="rise" style="--d:70ms">
-    <h3>Écris-nous sur WhatsApp</h3>
-    <p>On confirme la disponibilité, l'état et le prix final, du lundi au samedi de 9 h à 18 h.</p>
+    <h3>Écrivez-nous sur WhatsApp</h3>
+    <p>Du lundi au samedi, de 9 h à 18 h.</p>
    </li>
    <li class="rise" style="--d:140ms">
-    <h3>Paie comme tu veux</h3>
+    <h3>Réglez votre achat</h3>
     <p>À la commande ou à la réception.</p>
     <div class="pay" aria-label="Moyens de paiement acceptés">
-     <span class="moncash">MonCash</span>
-     <span class="natcash">natcash</span>
-     <span class="visa"><i class="fa-brands fa-cc-visa" aria-hidden="true"></i><span class="sr-only">Visa</span></span>
-     <span class="soge">SOGEBANK</span>
+     <span>MonCash</span>
+     <span>NatCash</span>
+     <span><i class="fa-brands fa-cc-visa" aria-hidden="true"></i>Visa</span>
+     <span>Sogebank</span>
     </div>
    </li>
    <li class="rise" style="--d:210ms">
-    <h3>Reçois-le en 24 h</h3>
+    <h3>Recevez-le en 24 h</h3>
     <p>Livraison gratuite à Port-au-Prince et Pétion-Ville, avec la garantie ORA de 30 jours.</p>
    </li>
   </ol>
@@ -1050,7 +974,7 @@
    <div id="avis-loading" style="display:contents">
     <div class="review-skeleton"></div><div class="review-skeleton"></div><div class="review-skeleton"></div>
    </div>
-   <div id="avis-empty" class="reviews-state" hidden><p>Sois le premier à laisser un avis !</p></div>
+   <div id="avis-empty" class="reviews-state" hidden><p>Aucun avis publié pour le moment.</p></div>
    <div id="avis-error" class="reviews-state" hidden>
     <p>Impossible de charger les avis pour le moment.</p>
     <button class="btn btn-quiet" type="button" id="retryAvis">Réessayer</button>
@@ -1064,7 +988,7 @@
 <!-- ================ FIN : CONTACT ================ -->
 <footer id="contact" class="end" aria-labelledby="contact-title">
  <div class="wrap">
-  <h2 id="contact-title" class="end-title rise">Une question&nbsp;?<br />Écris-nous.</h2>
+  <h2 id="contact-title" class="end-title rise">Écrivez-nous.</h2>
   <div class="grid12 end-grid">
    <div class="end-phones">
     <a href="https://wa.me/50946302424" target="_blank" rel="noopener" class="rise">
@@ -1077,7 +1001,7 @@
     </a>
    </div>
    <div class="end-info rise" style="--d:140ms">
-    <a class="btn btn-invert" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ta%20renmen%20pase%20yon%20k%C3%B2mand." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Écrire sur WhatsApp</a>
+    <a class="btn btn-primary" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ta%20renmen%20pase%20yon%20k%C3%B2mand." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Écrire sur WhatsApp</a>
     <p>Du lundi au samedi, de 9 h à 18 h.<br />Port-au-Prince, Haïti.</p>
     <div class="socials">
      <a href="https://www.instagram.com/oratechofficial?igsh=MWRiNWRjbmplaWZrbg==" target="_blank" rel="noopener">Instagram</a>
@@ -1088,10 +1012,10 @@
    </div>
   </div>
   <div class="end-foot">
-   <p class="lockup" aria-label="ORA. La tech que tu mérites.">
-    <svg class="lockup-ring" viewBox="0 0 100 100" aria-hidden="true"><use href="#ora-ring" /></svg>
-    <span class="lockup-text" aria-hidden="true"><span class="lockup-name">ORA</span><span class="lockup-slogan">La tech que tu mérites</span></span>
-   </p>
+   <div class="end-logo">
+    <svg viewBox="0 0 41.44 12" role="img" aria-label="ORA"><use href="#ora-logo" /></svg>
+    <p class="signature">La tech, en clair.</p>
+   </div>
    <p class="end-legal">&copy; <span id="year">2026</span> ORA. Tous droits réservés.</p>
   </div>
  </div>
@@ -1106,17 +1030,17 @@
  <aside id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
   <div class="cart-head">
    <div>
-    <h2 id="cart-title">Ton panier</h2>
+    <h2 id="cart-title">Votre panier</h2>
     <p id="cart-item-count-label">0 article</p>
    </div>
    <button class="icon-btn" type="button" id="cartClose" aria-label="Fermer le panier"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
   </div>
-  <div id="cart-empty"><p>Ton panier est vide.</p></div>
+  <div id="cart-empty"><p>Votre panier est vide.</p></div>
   <div id="cart-items" hidden></div>
   <div id="cart-footer" hidden>
    <div class="cart-total"><span>Total estimé</span><strong id="cart-total">$0</strong></div>
    <button class="btn btn-primary" type="button" id="cartCheckout"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Commander sur WhatsApp</button>
-   <p class="cart-pay">On confirme le prix final avec toi. Paiement MonCash, NatCash, Visa ou Sogebank.</p>
+   <p class="cart-pay">Paiement MonCash, NatCash, Visa ou Sogebank.</p>
    <button class="cart-clear" type="button" id="cartClear">Vider le panier</button>
   </div>
  </aside>
@@ -1131,33 +1055,34 @@
   </div>
   <form id="avisForm" class="form" novalidate>
    <div class="field">
-    <label for="avisNom">Non ou</label>
-    <input type="text" id="avisNom" required maxlength="30" placeholder="Ex : Jean-Baptiste" autocomplete="given-name" />
+    <label for="avisNom">Votre nom</label>
+    <input type="text" id="avisNom" required maxlength="40" placeholder="Ex : Jean-Baptiste Pierre" autocomplete="name" />
    </div>
    <div class="field">
-    <label for="avisVille">Kote ou rete</label>
+    <label for="avisVille">Votre ville ou quartier</label>
     <input type="text" id="avisVille" required maxlength="30" placeholder="Ex : Pétion-Ville" />
    </div>
    <div class="field">
     <fieldset>
-     <legend>Nòt</legend>
-     <div class="stars" id="starRating">
-      <button type="button" class="star-btn" data-rating="1" aria-label="1 étoile">★</button>
-      <button type="button" class="star-btn" data-rating="2" aria-label="2 étoiles">★</button>
-      <button type="button" class="star-btn" data-rating="3" aria-label="3 étoiles">★</button>
-      <button type="button" class="star-btn" data-rating="4" aria-label="4 étoiles">★</button>
-      <button type="button" class="star-btn" data-rating="5" aria-label="5 étoiles">★</button>
+     <legend>Votre note sur 5</legend>
+     <div class="notes" id="noteRating">
+      <button type="button" class="note-btn" data-rating="1" aria-pressed="false" aria-label="1 sur 5">1</button>
+      <button type="button" class="note-btn" data-rating="2" aria-pressed="false" aria-label="2 sur 5">2</button>
+      <button type="button" class="note-btn" data-rating="3" aria-pressed="false" aria-label="3 sur 5">3</button>
+      <button type="button" class="note-btn" data-rating="4" aria-pressed="false" aria-label="4 sur 5">4</button>
+      <button type="button" class="note-btn" data-rating="5" aria-pressed="false" aria-label="5 sur 5">5</button>
      </div>
     </fieldset>
-    <p id="ratingError" class="form-error" hidden>Chwazi yon nòt svp.</p>
+    <p id="ratingError" class="form-error" hidden>Choisissez une note.</p>
    </div>
    <div class="field">
-    <label for="avisCommentaire">Kòmantè</label>
-    <textarea id="avisCommentaire" required maxlength="500" rows="4" placeholder="Rakonte eksperyans ou ak ORA…"></textarea>
+    <label for="avisCommentaire">Votre avis</label>
+    <textarea id="avisCommentaire" required maxlength="500" rows="4" placeholder="Votre expérience avec ORA…"></textarea>
     <p class="field-hint"><span id="charCount">0</span> / 500</p>
    </div>
-   <button type="submit" id="avisSubmitBtn" class="btn btn-primary"><span id="avisSubmitText">Voye avis la</span></button>
-   <p id="avisFormError" class="form-error" hidden>Yon erè rive. Reeseye pita.</p>
+   <p class="form-note">Votre avis est relu avant publication. Seuls votre prénom et l'initiale de votre nom apparaissent.</p>
+   <button type="submit" id="avisSubmitBtn" class="btn btn-primary"><span id="avisSubmitText">Envoyer l'avis</span></button>
+   <p id="avisFormError" class="form-error" hidden>Une erreur est survenue. Réessayez plus tard.</p>
   </form>
  </div>
 </div>
@@ -1192,17 +1117,6 @@
 
  // ——— Année ———
  $('#year').textContent = new Date().getFullYear();
-
- // ——— Thème ———
- $('#themeToggle').addEventListener('click', function () {
-  root.classList.toggle('dark');
-  store('oratech_theme', root.classList.contains('dark') ? 'dark' : 'light');
- });
- if (window.matchMedia) {
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-   if (!read('oratech_theme')) root.classList.toggle('dark', e.matches);
-  });
- }
 
  // ——— Menu mobile ———
  var menuBtn = $('#menuToggle');
@@ -1304,7 +1218,7 @@
   if (!link) return;
   var btn = document.createElement('button');
   btn.type = 'button';
-  btn.className = 'btn btn-primary btn-small';
+  btn.className = 'btn btn-quiet btn-small';
   btn.textContent = 'Ajouter';
   btn.setAttribute('aria-label', 'Ajouter ' + p.dataset.name + ' au panier');
   btn.addEventListener('click', function () {
@@ -1538,7 +1452,9 @@
    .then(function (snapshot) {
     avisLoading.style.display = 'none';
     var data = [];
-    snapshot.forEach(function (doc) { data.push(doc.data()); });
+    // Charte §12 : seuls les avis relus sont publiés. Les nouveaux avis arrivent
+    // avec publie = false ; on les publie après relecture (publie = true).
+    snapshot.forEach(function (doc) { var d = doc.data(); if (d.publie !== false) data.push(d); });
     if (!data.length) { avisEmpty.hidden = false; return; }
     data.forEach(function (a) { avisList.appendChild(buildAvisCard(a)); });
    })
@@ -1549,27 +1465,24 @@
    });
  }
 
+ // Crédit sobre (charte §12) : prénom + initiale du nom. « Mardy Raynoldyne » → « Mardy R. »
+ function prenomInitiale(nom) {
+  var mots = String(nom || '').trim().split(/\s+/).filter(Boolean);
+  if (!mots.length) return 'Client';
+  var cap = function (m) { return m.charAt(0).toUpperCase() + m.slice(1).toLowerCase(); };
+  var prenom = cap(mots[0]);
+  return mots.length > 1 ? prenom + ' ' + mots[mots.length - 1].charAt(0).toUpperCase() + '.' : prenom;
+ }
+
+ // Pas d'étoiles (charte §10 bis) : la note reste en interne.
  function buildAvisCard(data) {
   var fig = document.createElement('figure');
   fig.className = 'review';
-  var rating = Math.min(5, Math.max(1, parseInt(data.rating, 10) || 5));
-  var stars = document.createElement('p');
-  stars.className = 'review-stars';
-  stars.setAttribute('aria-label', rating + ' sur 5');
-  stars.textContent = '★★★★★'.slice(0, rating) + '☆☆☆☆☆'.slice(0, 5 - rating);
   var quote = document.createElement('blockquote');
-  quote.textContent = '« ' + (data.commentaire || '') + ' »';
+  quote.textContent = '« ' + String(data.commentaire || '').trim() + ' »';
   var cap = document.createElement('figcaption');
-  var who = document.createElement('strong');
-  who.textContent = data.nom || 'Client';
-  var where = document.createElement('span');
-  var dateStr = '';
-  if (data.date && data.date.toDate) {
-   dateStr = data.date.toDate().toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
-  }
-  where.textContent = [data.ville, dateStr].filter(Boolean).join(' · ');
-  cap.appendChild(who); cap.appendChild(where);
-  fig.appendChild(stars); fig.appendChild(quote); fig.appendChild(cap);
+  cap.textContent = '— ' + prenomInitiale(data.nom);
+  fig.appendChild(quote); fig.appendChild(cap);
   return fig;
  }
 
@@ -1581,9 +1494,8 @@
  function setRating(n) {
   currentRating = n;
   $('#ratingError').hidden = true;
-  $all('.star-btn').forEach(function (b, i) {
-   b.classList.toggle('on', i < n);
-   b.setAttribute('aria-pressed', String(i < n));
+  $all('.note-btn').forEach(function (b) {
+   b.setAttribute('aria-pressed', String(parseInt(b.dataset.rating, 10) === n));
   });
  }
  function resetAvisForm() {
@@ -1596,7 +1508,7 @@
  $('#closeAvis').addEventListener('click', closeAvisModal);
  $('#retryAvis').addEventListener('click', loadAvis);
  avisModal.addEventListener('click', function (e) { if (e.target === avisModal) closeAvisModal(); });
- $all('.star-btn').forEach(function (b) { b.addEventListener('click', function () { setRating(parseInt(b.dataset.rating, 10)); }); });
+ $all('.note-btn').forEach(function (b) { b.addEventListener('click', function () { setRating(parseInt(b.dataset.rating, 10)); }); });
  $('#avisCommentaire').addEventListener('input', function () { $('#charCount').textContent = this.value.length; });
 
  $('#avisForm').addEventListener('submit', function (e) {
@@ -1610,24 +1522,24 @@
   var btn = $('#avisSubmitBtn');
   var label = $('#avisSubmitText');
   btn.disabled = true;
-  label.textContent = 'Voye…';
+  label.textContent = 'Envoi…';
 
   if (!avisCollection) {
-   btn.disabled = false; label.textContent = 'Voye avis la';
+   btn.disabled = false; label.textContent = 'Envoyer l\'avis';
    $('#avisFormError').hidden = false;
    return;
   }
   avisCollection.add({
    nom: nom, ville: ville, rating: currentRating, commentaire: commentaire,
+   publie: false,
    date: firebase.firestore.FieldValue.serverTimestamp()
   }).then(function () {
-   btn.disabled = false; label.textContent = 'Voye avis la';
+   btn.disabled = false; label.textContent = 'Envoyer l\'avis';
    closeAvisModal();
-   showToast('Mèsi anpil ! Avis ou a resevwa.');
-   loadAvis();
+   showToast('Merci. Votre avis sera publié après relecture.');
   }).catch(function (err) {
    console.error('Erreur soumission avis:', err);
-   btn.disabled = false; label.textContent = 'Voye avis la';
+   btn.disabled = false; label.textContent = 'Envoyer l\'avis';
    $('#avisFormError').hidden = false;
   });
  });
