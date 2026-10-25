@@ -437,6 +437,29 @@
   }
   .wa-fab:active { transform: scale(0.94); }
   .js .wa-fab:not(.show) { opacity: 0; transform: translateY(8px); pointer-events: none; }
+
+  /* Pastille de recherche active */
+  .search-pill {
+   position: fixed; left: 50%; bottom: 16px; z-index: 45;
+   display: flex; align-items: center; gap: 12px;
+   max-width: calc(100vw - 32px); padding: 6px 6px 6px 20px; border-radius: 999px;
+   background: var(--ink); color: var(--ground);
+   font-size: 0.9375rem; font-weight: 500;
+   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+   opacity: 0; transform: translate(-50%, 8px);
+   transition: opacity 200ms ease, transform 220ms var(--ease-out);
+  }
+  .search-pill[hidden] { display: none; }
+  .search-pill.show { opacity: 1; transform: translate(-50%, 0); }
+  .search-pill span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .search-pill .btn { flex-shrink: 0; min-height: 40px; background: var(--ground); color: var(--ink); }
+  @media (max-width: 899px) {
+   .search-pill { left: 16px; right: 16px; transform: translateY(8px); justify-content: space-between; }
+   .recherche-active .wa-fab { display: none; }  /* la pastille prend toute la largeur */
+   .search-pill.show { transform: none; }
+  }
+  .no-result-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .no-result-actions .btn { margin-top: 0; }
   @media (min-width: 900px) { .wa-fab { display: none; } }
 
   /* ===================================================================
@@ -689,7 +712,10 @@
   <div id="no-result" class="no-result" hidden>
    <p><strong>Ce produit n'est pas dans le catalogue pour le moment.</strong></p>
    <p>Disponibilité sur demande, par WhatsApp.</p>
-   <a class="btn btn-primary" href="https://wa.me/50946302424" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander sur WhatsApp</a>
+   <div class="no-result-actions">
+    <a class="btn btn-primary" href="https://wa.me/50946302424" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Demander sur WhatsApp</a>
+    <button class="btn btn-quiet" type="button" id="noResultClear">Voir tous les produits</button>
+   </div>
   </div>
 
   <div class="products" id="products">
@@ -1021,6 +1047,12 @@
  </div>
 </footer>
 
+<!-- Recherche active : toujours visible, toujours réversible -->
+<div id="searchPill" class="search-pill" role="status" hidden>
+ <span id="searchPillText"></span>
+ <button class="btn btn-small" type="button" id="searchClear">Tout afficher</button>
+</div>
+
 <!-- Bouton WhatsApp flottant -->
 <a class="wa-fab" href="https://wa.me/50946302424?text=Bonjou%20ORA%20!%20Mwen%20ta%20renmen%20gen%20plis%20enf%C3%B2masyon." target="_blank" rel="noopener" aria-label="Écrire à ORA sur WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
 
@@ -1241,12 +1273,24 @@
   });
   noResult.hidden = shown > 0;
  }
- filters.forEach(function (f) { f.addEventListener('click', function () { resetSearch(); applyFilter(f.dataset.filter); }); });
+ filters.forEach(function (f) {
+  f.addEventListener('click', function () {
+   if (activeQuery) clearSearch({ keepHistory: true });
+   applyFilter(f.dataset.filter);
+  });
+ });
 
  // ——— Recherche ———
+ // Une recherche active reste toujours visible (pastille en bas de l'écran)
+ // et se quitte de trois façons : « Tout afficher », retour arrière du
+ // téléphone ou du navigateur, ou champ de recherche vidé.
  var searchToggle = $('#searchToggle');
  var searchBar = $('#searchBar');
  var searchInput = $('#searchInput');
+ var pill = $('#searchPill');
+ var pillText = $('#searchPillText');
+ var activeQuery = '';
+
  function setSearch(open) {
   searchBar.hidden = !open;
   searchToggle.setAttribute('aria-expanded', String(open));
@@ -1256,26 +1300,70 @@
   products.forEach(function (p) { p.hidden = false; });
   noResult.hidden = true;
  }
- searchToggle.addEventListener('click', function () { setSearch(searchBar.hidden); });
- $('#searchForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var q = searchInput.value.trim().toLowerCase();
+ function showPill(q, n) {
+  pillText.textContent = '« ' + q + ' » · ' + (n === 0 ? 'aucun résultat' : n + ' résultat' + (n > 1 ? 's' : ''));
+  pill.hidden = false;
+  document.body.classList.add('recherche-active');
+  requestAnimationFrame(function () { pill.classList.add('show'); });
+ }
+ function hidePill() {
+  pill.classList.remove('show');
+  pill.hidden = true;
+  document.body.classList.remove('recherche-active');
+ }
+ function runSearch(raw) {
+  var q = raw.trim().toLowerCase();
   filters.forEach(function (f) { f.setAttribute('aria-pressed', String(f.dataset.filter === 'all')); });
   resetSearch();
-  if (!q) return;
-  var first = null;
+  if (!q) { clearSearch(); return null; }
+  activeQuery = raw.trim();
+  var first = null, n = 0;
   products.forEach(function (p) {
    var ok = p.textContent.toLowerCase().indexOf(q) !== -1;
    p.hidden = !ok;
-   if (ok) { p.classList.add('in'); if (!first) first = p; }
+   if (ok) { n++; p.classList.add('in'); if (!first) first = p; }
   });
-  var catalogHit = catalogProducts.some(function (p) { return !p.hidden; });
   noResult.hidden = !!first;
+  showPill(activeQuery, n);
+  return first || noResult;
+ }
+ function clearSearch(opts) {
+  var o = opts || {};
+  // Si la recherche a créé une entrée d'historique, on la retire proprement
+  if (!o.fromHistory && !o.keepHistory && history.state && history.state.oraRecherche) { history.back(); return; }
+  if (o.keepHistory && history.state && history.state.oraRecherche) { try { history.replaceState(null, ''); } catch (err) {} }
+  activeQuery = '';
+  searchInput.value = '';
+  resetSearch();
+  applyFilter('all');
+  hidePill();
+ }
+
+ searchToggle.addEventListener('click', function () { setSearch(searchBar.hidden); });
+ $('#searchForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var target = runSearch(searchInput.value);
+  if (!target) return;
+  // Une entrée d'historique : le retour arrière ramène tous les produits
+  try {
+   if (history.state && history.state.oraRecherche) history.replaceState({ oraRecherche: activeQuery }, '');
+   else history.pushState({ oraRecherche: activeQuery }, '');
+  } catch (err) { /* historique indisponible : la pastille suffit */ }
   searchInput.blur();
   setSearch(false);
-  var target = first || noResult;
-  if (!catalogHit && first) target = first;
-  target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  var catalogHit = catalogProducts.some(function (p) { return !p.hidden; });
+  if (catalogHit || target === noResult) target = $('#catalogue');
+  target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: catalogHit || target === noResult ? 'start' : 'center' });
+ });
+ // Champ vidé = tout réafficher
+ searchInput.addEventListener('input', function () {
+  if (!searchInput.value.trim() && activeQuery) clearSearch();
+ });
+ $('#searchClear').addEventListener('click', function () { clearSearch(); });
+ $('#noResultClear').addEventListener('click', function () { clearSearch(); });
+ window.addEventListener('popstate', function (e) {
+  if (e.state && e.state.oraRecherche) { searchInput.value = e.state.oraRecherche; runSearch(e.state.oraRecherche); }
+  else if (activeQuery) clearSearch({ fromHistory: true });
  });
 
  // ——— Photo agrandie ———
@@ -1389,6 +1477,7 @@
   else if (drawer.classList.contains('open')) setCart(false);
   else if (!searchBar.hidden) setSearch(false);
   else if (!mobileMenu.hidden) setMenu(false);
+  else if (activeQuery) clearSearch();
  });
 
  // ——— Entrées au défilement ———
